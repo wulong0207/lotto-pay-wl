@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+
+	<!-- 【pay模块】提款交易远程服务 -->
+	<bean name="/transTakenConfirmService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iTransTakenConfirmService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.ITransTakenConfirmService"></property>
+	</bean>
+
+	<!-- 【pay模块】充值交易远程服务 -->
+	<bean name="/transRechargeService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iTransRechargeService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.ITransRechargeService"></property>
+	</bean>
+
+	<!-- 【pay模块】用户交易远程服务 -->
+	<bean name="/transUserService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iTransUserService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.ITransUserService"></property>
+	</bean>
+
+	<!-- 【pay模块】用户交易远程服务 -->
+	<bean name="/transUserLogService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iTransUserLogService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.ITransUserLogService"></property>
+	</bean>
+
+	<!-- 【pay模块】支付统一远程服务 -->
+	<bean name="/payService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iPayService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.IPayService"></property>
+	</bean>
+
+	<!-- 【pay模块】充值统一远程服务 -->
+	<bean name="/rechargeService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iRechargeService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.IRechargeService"></property>
+	</bean>
+
+	<!-- 【pay模块】彩金红包远程服务 -->
+	<bean name="/operateCouponService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iOperateCouponService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.IOperateCouponService"></property>
+	</bean>
+
+	<!-- 【pay模块】用户红包交易记录远程服务 -->
+	<bean name="/transRedService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iTransRedService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.ITransRedService"></property>
+	</bean>
+
+	<!-- 银行卡 远程服务 -->
+	<bean name="/payChannelService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iPayChannelService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.IPayChannelService" />
+	</bean>
+
+	<!-- 【pay模块】用户红包交易记录远程服务 -->
+	<bean name="/userWalletService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iUserWalletService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.IUserWalletService"></property>
+	</bean>
+
+	<!-- 【pay模块】支付限额 -->
+	<bean name="/payBankLimitService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iPayBankLimitService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.IPayBankLimitService"></property>
+	</bean>
+	
+	<!-- 【pay模块】活动支付 -->
+	<bean name="/activityPayService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!-- service的ref与remoteServiceImpl中@Service注解中的名字一致 -->
+		<property name="service" ref="iActivityPayService" />
+		<!-- 接口的路径 -->
+		<property name="serviceInterface" value="com.hhly.paycore.remote.service.IActivityPayService"></property>
+	</bean>
+
+
+</beans> 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hhly.paycore.dao.LotteryTypeDaoMapper">
+	<!-- sql结果集：前端接口：彩种 -->
+	<resultMap id="LotteryFrontResultMap" type="com.hhly.skeleton.lotto.base.lottery.bo.LotteryBO">
+		<result property="lotteryCode" column="lottery_code" jdbcType="INTEGER" />
+		<result property="lotteryName" column="lottery_name" jdbcType="VARCHAR" />
+		<result property="lotteryLogoUrl" column="lottery_logo_url" jdbcType="VARCHAR" />
+		<result property="saleStatus" column="sale_status" jdbcType="SMALLINT" />
+		<result property="drawTime" column="draw_time" jdbcType="VARCHAR" />
+		<result property="vacations" column="vacations" jdbcType="VARCHAR" />
+		<result property="startSailTime" column="START_SAIL_TIME" jdbcType="VARCHAR" />
+		<result property="endSaleTime" column="END_SAIL_TIME" jdbcType="VARCHAR" />
+		<result property="endCheckTime" column="END_CHECK_TIME" jdbcType="VARCHAR" />
+		<result property="sailDayCycle" column="SAIL_DAY_CYCLE" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 前端接口：查询单个彩种 -->
+	<select id="findSingleFront" resultMap="LotteryFrontResultMap">
+		SELECT LOTTERY_CODE,LOTTERY_NAME,LOTTERY_LOGO_URL,SALE_STATUS,DRAW_TIME,VACATIONS,START_SAIL_TIME,END_SAIL_TIME,END_CHECK_TIME,SAIL_DAY_CYCLE FROM
+		LOTTERY_TYPE lt WHERE lt.LOTTERY_CODE = #{lotteryCode}
+	</select>
+</mapper>

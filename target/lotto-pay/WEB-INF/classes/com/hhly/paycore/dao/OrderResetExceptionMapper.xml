@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.OrderResetExceptionMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.paycore.po.OrderResetExceptionPO">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="order_code" property="orderCode" jdbcType="VARCHAR" />
+		<result column="aft_bonus" property="aftBonus" jdbcType="DECIMAL" />
+		<result column="total_cash_balance" property="totalCashBalance" jdbcType="DECIMAL" />
+		<result column="difference_balance" property="differenceBalance" jdbcType="DECIMAL" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="base_column">
+		ID,
+		<include refid="add_column" />
+	</sql>
+	<sql id="add_column">
+		ORDER_CODE, AFT_BONUS, TOTAL_CASH_BALANCE, DIFFERENCE_BALANCE, USER_ID, CREATE_TIME, UPDATE_TIME
+	</sql>
+
+	<sql id="add_value">
+		#{orderCode,jdbcType=VARCHAR}, #{aftBonus,jdbcType=DECIMAL}, #{totalCashBalance,jdbcType=DECIMAL},
+		#{differenceBalance,jdbcType=DECIMAL}, #{userId,jdbcType=INTEGER},NOW(),NOW()
+	</sql>
+
+	<sql id="common_where">
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="userId > 0">
+				AND USER_ID = #{userId}
+			</if>
+			<if test="orderCode != null and orderCode !='' ">
+				AND ORDER_CODE = #{orderCode}
+			</if>
+		</trim>
+	</sql>
+
+
+
+	<insert id="addOrderReset" parameterType="com.hhly.paycore.po.OrderResetExceptionPO">
+		insert into ORDER_RESET_EXCEPTION(
+		<include refid="add_column" />
+		)values(
+		<include refid="add_value" />
+		)
+	</insert>
+
+</mapper>

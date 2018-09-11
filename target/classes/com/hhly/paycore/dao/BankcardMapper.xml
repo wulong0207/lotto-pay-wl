@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.BankcardMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.PayBankcardBO">
+		<result column="ID" jdbcType="INTEGER" property="id" />
+		<result column="USERID" jdbcType="INTEGER" property="userid" />
+		<result column="REALNAME" jdbcType="VARCHAR" property="realname" />
+		<result column="BANKID" jdbcType="INTEGER" property="bankid" />
+		<result column="BANKNAME" jdbcType="VARCHAR" property="bankname" />
+		<result column="ISDEFAULT" jdbcType="SMALLINT" property="isdefault" />
+		<result column="OPENBANK" jdbcType="INTEGER" property="openbank" />
+		<result column="PROVINCE" jdbcType="VARCHAR" property="province" />
+		<result column="CITY" jdbcType="VARCHAR" property="city" />
+		<result column="CARDCODE" jdbcType="VARCHAR" property="cardcode" />
+		<result column="BANKTYPE" jdbcType="SMALLINT" property="banktype" />
+		<result column="OVERDUE" jdbcType="VARCHAR" property="overdue" />
+		<result column="BINDFLAG" jdbcType="SMALLINT" property="bindflag" />
+		<result column="SAFECODE" jdbcType="VARCHAR" property="safecode" />
+		<result column="IP" jdbcType="VARCHAR" property="ip" />
+		<result column="EXT" jdbcType="VARCHAR" property="ext" />
+		<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="STATUS" jdbcType="SMALLINT" property="status" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		ID, USERID, REALNAME, BANKID, BANKNAME, ISDEFAULT, OPENBANK, PROVINCE, CITY, CARDCODE, BANKTYPE, OVERDUE,
+		BINDFLAG, SAFECODE, IP, EXT, UPDATE_TIME, CREATE_TIME, STATUS
+	</sql>
+
+
+	<select id="selectBankCard" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.pay.vo.PayBankcardVO">
+		select
+		<include refid="Base_Column_List" />
+		from PAY_BANKCARD WHERE STATUS = 1 AND USERID = #{userid}
+		<if test="isdefault != null ">
+			AND isdefault = #{isdefault,jdbcType=INTEGER}
+		</if>
+	</select>
+
+
+	<update id="updateByBankCardId" parameterType="com.hhly.paycore.po.PayBankcardPO">
+		update PAY_BANKCARD
+		<set>
+			<if test="record.overdue != null">
+				OVERDUE = #{record.overdue,jdbcType=VARCHAR},UPDATE_TIME = NOW()
+			</if>
+		</set>
+		WHERE id = #{record.id} AND USERID = #{record.userId} and status = 1
+	</update>
+
+	<!-- 更新银行名称 -->
+	<update id="updateBankName" parameterType="com.hhly.paycore.po.PayBankcardPO">
+		update PAY_BANKCARD
+		<set>
+			UPDATE_TIME = NOW(),
+			<if test="bankname != null">
+				BANKNAME = #{bankname,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from PAY_BANKCARD
+	</select>
+
+	<!-- 根据用户id查询用户所拥有的银行卡。用于支付展示 -->
+	<select id="findPayBankCardByUserId" resultType="com.hhly.skeleton.pay.bo.PayBankcardBO">
+		SELECT A.*,B.NAME AS fullName,B.CNAME AS simpleName FROM PAY_BANKCARD A
+		INNER JOIN PAY_BANK B ON A.BANKID=B.ID AND
+		B.STATUS=1
+		WHERE A.STATUS=1 and A.USERID = #{userId}
+		<!-- 根据不同端口的字段进行排序 -->
+		<choose>
+			<when test="orderBy == 'PC'">
+				ORDER BY B.ORDER_PC ASC
+			</when>
+			<when test="orderBy == 'IOS'">
+				ORDER BY B.ORDER_IOS ASC
+			</when>
+			<when test="orderBy == 'Android'">
+				ORDER BY B.ORDER_ANDROID ASC
+			</when>
+			<when test="orderBy == 'H5'">
+				ORDER BY B.ORDER_H5 ASC
+			</when>
+			<!-- 默认使用PC的 -->
+			<otherwise>
+				ORDER BY B.ORDER_PC ASC
+			</otherwise>
+		</choose>
+	</select>
+
+
+	<!-- 根据银行卡ID获取用户银行卡信息 -->
+	<select id="getUserBankById" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from PAY_BANKCARD WHERE USERID=#{userId} and ID = #{id}
+	</select>
+
+	<!-- 获取用户可用银行卡信息 -->
+	<select id="getUserBankList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from PAY_BANKCARD WHERE STATUS = 1 AND USERID=#{userId}
+	</select>
+
+	<!-- 根据银行卡CODE获取用户银行卡信息 -->
+	<select id="getUserBankByCode" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from PAY_BANKCARD WHERE USERID=#{userId} and CARDCODE = #{cardCode} limit 1
+	</select>
+
+
+
+	<update id="updateDefault" parameterType="com.hhly.paycore.po.PayBankcardPO">
+		update pay_bankcard pb set pb.isdefault = 1 where pb.userid = #{userId}
+		and pb.cardcode = #{cardcode}
+	</update>
+	<update id="updateDisableDefault" parameterType="com.hhly.paycore.po.PayBankcardPO">
+		update pay_bankcard pb set pb.isdefault = 0 where pb.userid =
+		#{userId} and pb.cardcode != #{cardcode}
+	</update>
+</mapper>

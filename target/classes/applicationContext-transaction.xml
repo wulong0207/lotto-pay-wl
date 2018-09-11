@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+
+	<!-- 线程池配置 -->
+     <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">            
+        <!-- 核心线程数，默认为1 -->            
+        <property name="corePoolSize" value="10" />            
+        <!-- 最大线程数，默认为Integer.MAX_VALUE -->            
+        <property name="maxPoolSize" value="1000" />            
+        <!-- 队列最大长度，一般需要设置值>=notifyScheduledMainExecutor.maxNum；默认为Integer.MAX_VALUE -->            
+        <property name="queueCapacity" value="3000" />            
+        <!-- 线程池维护线程所允许的空闲时间，默认为60s -->            
+        <property name="keepAliveSeconds" value="600" />            
+        <!-- 线程池对拒绝任务（无线程可用）的处理策略，目前只支持AbortPolicy、CallerRunsPolicy；默认为后者 -->            
+        <property name="rejectedExecutionHandler">            
+            <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />            
+        </property>            
+    </bean>
+
+    <!-- 事务管理器 start-->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!-- 事务管理器  end -->
+
+    <!-- 通知 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 读取数据方法，一般采用只读事务 -->
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+			<!--以下方法，如save，update，insert等对数据库进行写入操作的方法，当产生Exception时进行回滚 -->
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRES_NEW" />
+			<!--2017-06-11，修改为抛出异常都进行回滚 -->
+			<tx:method name="*" rollback-for="Exception" />
+		</tx:attributes>
+	</tx:advice>
+
+   	<aop:config>
+		<aop:pointcut id="serviceOperation"
+			expression="(execution(* com.hhly.paycore.service.*.*(..))) or (execution(* com.hhly.paycore.remote.service.*.*(..)))" />
+		<aop:advisor pointcut-ref="serviceOperation" advice-ref="txAdvice" />
+	</aop:config>
+
+
+	<!-- redis aop 处理缓存 add by scott 2017-02-04 -->
+	<!-- redis缓存切面 -->
+<!-- 	<bean id="ReadCacheAspect" class="com.hhly.redis.aop.ReadThroughAssignAOP" /> -->
+<!-- 	<bean id="DeleteCacheAspect" class="com.hhly.redis.aop.DeleteThroughAssignAOP" /> -->
+<!-- 	<bean id="UpdateCacheAspect" class="com.hhly.redis.aop.UpdateThroughAssignAOP" /> -->
+
+	<!-- <bean id="payLogAspect" class="com.hhly.usercore.pay.common.PayLogAdvice" /> -->
+<!-- 	<bean id="validateAspect" class="com.hhly.skeleton.base.valid.aop.ParameterVaildAop" /> -->
+
+	<!-- 切面申明配置 -->
+<!-- 	<aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"> -->
+<!-- 		<aop:include name="ReadCacheAspect" /> -->
+<!-- 		<aop:include name="DeleteCacheAspect" /> -->
+<!-- 		<aop:include name="UpdateCacheAspect" /> -->
+		<!-- <aop:include name="payLogAspect" /> -->
+<!-- 		<aop:include name="validateAspect" /> -->
+<!-- 	</aop:aspectj-autoproxy> -->
+
+</beans>

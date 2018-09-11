@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.TransRechargeDetailMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.TransRechargeDetailBO">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="RECHARGE_CODE" jdbcType="VARCHAR" property="rechargeCode" />
+		<result column="ORDER_CODE" jdbcType="VARCHAR" property="orderCode" />
+		<result column="BUY_TYPE" jdbcType="SMALLINT" property="buyType" />
+		<result column="ORDER_AMOUNT" jdbcType="DECIMAL" property="orderAmount" />
+		<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+
+	<sql id="base_column">
+		ID,
+		<include refid="add_column" />
+	</sql>
+
+	<sql id="add_column">
+		RECHARGE_CODE,ORDER_CODE,BUY_TYPE,ORDER_AMOUNT,CREATE_TIME,UPDATE_TIME
+	</sql>
+
+	<sql id="add_value">
+		#{rechargeCode,jdbcType=VARCHAR},#{orderCode,jdbcType=VARCHAR},#{buyType,jdbcType=SMALLINT},#{orderAmount,jdbcType=DECIMAL},NOW(),NOW()
+	</sql>
+
+
+	<select id="getRechargeDetailByCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_RECHARGE_DETAIL where RECHARGE_CODE = #{rechargeCode}
+	</select>
+
+	<select id="getRechargeDetailByOrderCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_RECHARGE_DETAIL where ORDER_CODE = #{orderCode} order by id desc limit 1
+	</select>
+
+
+	<!-- 批量添加 -->
+	<insert id="addRechargeDetailList" parameterType="java.util.List">
+		insert into TRANS_RECHARGE_DETAIL (
+		<include refid="add_column" />
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.rechargeCode,jdbcType=VARCHAR},#{item.orderCode,jdbcType=VARCHAR},#{item.buyType,jdbcType=SMALLINT},#{item.orderAmount,jdbcType=DECIMAL},NOW(),NOW()
+			)
+		</foreach>
+	</insert>
+
+</mapper>

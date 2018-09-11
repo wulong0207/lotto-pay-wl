@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.PayChannelMgrMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.channel.bo.PayChannelMgrBO">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="CODE" property="code" jdbcType="VARCHAR" />
+		<result column="ORDER_ID" property="orderId" jdbcType="SMALLINT" />
+		<result column="MIN_PAY" property="minPay" jdbcType="DECIMAL" />
+		<result column="MAX_PAY" property="maxPay" jdbcType="DECIMAL" />
+		<result column="RATE" property="rate" jdbcType="DECIMAL" />
+		<result column="PC" property="pc" jdbcType="BIT" />
+		<result column="H5" property="h5" jdbcType="BIT" />
+		<result column="ANDROID" property="android" jdbcType="BIT" />
+		<result column="IOS" property="ios" jdbcType="BIT" />
+		<result column="AVAILABLE" property="available" jdbcType="BIT" />
+		<result column="PAUSE" property="pause" jdbcType="BIT" />
+		<result column="BEGIN_TIME" property="beginTime" jdbcType="TIMESTAMP" />
+		<result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, NAME, CODE, ORDER_ID, MIN_PAY, MAX_PAY, RATE, PC, H5, ANDROID, IOS, AVAILABLE,
+		PAUSE,BEGIN_TIME,
+		END_TIME
+	</sql>
+
+	<select id="getAll" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PAY_CHANNEL_MGR ORDER BY ORDER_ID DESC
+	</select>
+
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM PAY_CHANNEL_MGR WHERE ID = #{id,jdbcType=INTEGER}
+	</select>
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+          http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+
+	<!-- jedis 基础参数配置 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<!-- 连接池最大允许连接数 -->
+		<property name="maxTotal" value="${maxTotal}" />
+		<!-- 连接池中最大空闲的连接数 -->
+		<property name="maxIdle" value="${maxIdle}" />
+		<!-- 对象空闲多久后逐出,当空闲时间>该值 且 空闲连接>最大空闲数 时直接逐出 -->
+		<property name="softMinEvictableIdleTimeMillis" value="${softMinEvictableIdleTimeMillis}" />
+		<!-- 表示当borrow一个jedis实例时，最大的等待时间 -->
+		<property name="maxWaitMillis" value="${maxWaitMillis}" />
+		<!-- 向调用者输出链接资源时，是否检测是有有效 -->
+		<property name="testOnBorrow" value="${testOnBorrow}" />
+		<!-- 向连接池归还链接时，是否检测链接对象的有效性 -->
+		<property name="testOnReturn" value="${testOnReturn}" />
+		<!-- 当设置为true,且服务开启的jmx服务时,使用jconsole等工具将看到连接池的状态 -->
+		<property name="jmxEnabled" value="${jmxEnabled}" />
+		<!-- 连接耗尽时是否阻塞  false报异常,ture阻塞直到超时 -->
+		<property name="blockWhenExhausted" value="${blockWhenExhausted}" />
+	</bean>
+	
+	<!-- 配置Cluster 集群  add by scott 2017-1-12 start -->
+	<bean id="redisClusterConfiguration" class="org.springframework.data.redis.connection.RedisClusterConfiguration">
+	<property name="maxRedirects" value="3"/>
+	<!-- 节点配置 -->
+	<property name="clusterNodes">
+		<set>
+			<bean class="org.springframework.data.redis.connection.RedisClusterNode">
+				<constructor-arg name="host" value="${host1}"/>
+				<constructor-arg name="port" value="${port1}"/>
+			</bean>
+			<bean class="org.springframework.data.redis.connection.RedisClusterNode">
+				<constructor-arg name="host" value="${host2}"/>
+				<constructor-arg name="port" value="${port2}"/>
+			</bean>
+			<bean class="org.springframework.data.redis.connection.RedisClusterNode">
+				<constructor-arg name="host" value="${host3}"/>
+				<constructor-arg name="port" value="${port3}"/>
+			</bean>
+			<bean class="org.springframework.data.redis.connection.RedisClusterNode">
+				<constructor-arg name="host" value="${host4}"/>
+				<constructor-arg name="port" value="${port4}"/>
+			</bean>
+			<bean class="org.springframework.data.redis.connection.RedisClusterNode">
+				<constructor-arg name="host" value="${host5}"/>
+				<constructor-arg name="port" value="${port5}"/>
+			</bean>
+			<bean class="org.springframework.data.redis.connection.RedisClusterNode">
+				<constructor-arg name="host" value="${host6}"/>
+				<constructor-arg name="port" value="${port6}"/>
+			</bean>
+		</set>
+	</property>
+    </bean>
+	<!-- 配置Cluster 集群  add by scott 2017-1-12 end -->
+    
+    <!-- 配置redis connection -->
+    <bean id="redisConnectionFactory" class="com.hhly.redis.factory.YcJedisConnectionFactory">
+		<constructor-arg ref="redisClusterConfiguration" />
+		<constructor-arg ref="jedisPoolConfig" />
+		<property name="connectionTimeout" value="${connectionTimeout}"></property>
+		<property name="password" value="${redis_password}"></property>
+		<property name="soTimeout" value="${soTimeout}"></property>
+	</bean>
+    
+    <!-- 数据以字符串存储  -->
+    <bean id="stringRedisSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+    
+    <!-- 数据以字节流存储 -->
+    <bean id="jdkRedisSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+    
+    <!--  redis String类型 访问模版本 -->
+    <bean id="stringRedisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+    	<property name="connectionFactory" ref="redisConnectionFactory"/>
+    </bean>
+    
+	<!-- redis 访问模版 -->
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory" ref="redisConnectionFactory" />
+		<!-- 在hash数据结构中，hash-key的序列化策略 -->
+		<property name="hashKeySerializer" ref="stringRedisSerializer" />
+        <!-- 对于普通K-V操作时，key采取的序列化策略 -->
+        <property name="keySerializer" ref="stringRedisSerializer" />
+        <!-- value采取的序列化策略 -->
+        <property name="valueSerializer" ref="jdkRedisSerializer" />
+	</bean>
+	
+	
+    
+</beans>

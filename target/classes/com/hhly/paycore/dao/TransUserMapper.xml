@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.TransUserMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.TransUserBO">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="USER_ID" jdbcType="DECIMAL" property="userId" />
+		<result column="TRANS_CODE" jdbcType="VARCHAR" property="transCode" />
+		<result column="ORDER_CODE" jdbcType="VARCHAR" property="orderCode" />
+		<result column="TRANS_TYPE" jdbcType="SMALLINT" property="transType" />
+		<result column="ORDER_INFO" jdbcType="VARCHAR" property="orderInfo" />
+		<result column="TRANS_END_TIME" jdbcType="TIMESTAMP" property="transEndTime" />
+		<result column="TRANS_TIME" jdbcType="TIMESTAMP" property="transTime" />
+		<result column="THIRD_TRANS_TIME" jdbcType="TIMESTAMP" property="thirdTransTime" />
+		<result column="TRANS_AMOUNT" jdbcType="DECIMAL" property="transAmount" />
+		<result column="CASH_AMOUNT" jdbcType="DECIMAL" property="cashAmount" />
+		<result column="RED_TRANS_AMOUNT" jdbcType="DECIMAL" property="redTransAmount" />
+		<result column="TRANS_STATUS" jdbcType="SMALLINT" property="transStatus" />
+		<result column="CHANNEL_ID" jdbcType="VARCHAR" property="channelId" />
+		<result column="THIRD_TRANS_ID" jdbcType="VARCHAR" property="thirdTransId" />
+		<result column="SERVICE_CHARGE" jdbcType="DECIMAL" property="serviceCharge" />
+		<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="TOTAL_CASH_BALANCE" jdbcType="DECIMAL" property="totalCashBalance" />
+		<result column="AMOUNT_80" jdbcType="DECIMAL" property="amount80" />
+		<result column="AMOUNT_20" jdbcType="DECIMAL" property="amount20" />
+		<result column="AMOUNT_WIN" jdbcType="DECIMAL" property="amountWin" />
+		<result column="RED_CODE" jdbcType="VARCHAR" property="redCode" />
+		<result column="TRADE_CODE" jdbcType="VARCHAR" property="tradeCode" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="SOURCE_TYPE" jdbcType="SMALLINT" property="sourceType" />
+		<result column="TOTAL_RED_BALANCE" jdbcType="DECIMAL" property="totalRedBalance" />
+		<result column="AWARD_FLAG" jdbcType="SMALLINT" property="awardFlag" />
+	</resultMap>
+
+	<sql id="base_column">
+		ID,
+		<include refid="add_column" />
+	</sql>
+
+	<sql id="add_column">
+		USER_ID,TRANS_CODE,ORDER_CODE,TRANS_TYPE,ORDER_INFO,TRANS_END_TIME,TRANS_TIME,THIRD_TRANS_TIME,TRANS_AMOUNT,CASH_AMOUNT,RED_TRANS_AMOUNT,TRANS_STATUS,CHANNEL_ID,
+		THIRD_TRANS_ID,SERVICE_CHARGE,UPDATE_TIME,CREATE_TIME,TOTAL_CASH_BALANCE,AMOUNT_80,AMOUNT_20,AMOUNT_WIN,RED_CODE,TRADE_CODE,REMARK,AGENT_CODE,SOURCE_TYPE,TOTAL_RED_BALANCE,AWARD_FLAG
+	</sql>
+
+	<sql id="add_value">
+		#{userId,jdbcType=INTEGER},#{transCode,jdbcType=VARCHAR},#{orderCode,jdbcType=VARCHAR},#{transType,jdbcType=INTEGER},#{orderInfo,jdbcType=VARCHAR},
+		NOW(),NOW(),NOW(),#{transAmount,jdbcType=DECIMAL},#{cashAmount,jdbcType=DECIMAL},#{redTransAmount,jdbcType=DECIMAL},#{transStatus,jdbcType=INTEGER},#{channelId,jdbcType=VARCHAR},
+		#{thirdTransId,jdbcType=VARCHAR},#{serviceCharge,jdbcType=DECIMAL},NOW(),NOW(),#{totalCashBalance,jdbcType=DECIMAL},#{amount80,jdbcType=DECIMAL},#{amount20,jdbcType=DECIMAL},#{amountWin,jdbcType=DECIMAL},
+		#{redCode,jdbcType=VARCHAR},#{tradeCode,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{agentCode,jdbcType=VARCHAR},#{sourceType,jdbcType=INTEGER},#{totalRedBalance,jdbcType=DECIMAL},#{awardFlag,jdbcType=INTEGER}
+	</sql>
+
+	<sql id="common_where">
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="userId > 0">
+				AND USER_ID = #{userId}
+			</if>
+			<if test="id > 0">
+				AND id <![CDATA[ <= ]]>
+				#{id}
+			</if>
+			<if test="transStatus!=null">
+				AND TRANS_STATUS = #{transStatus}
+			</if>
+			<if test="timeType == 1">
+				<if test="startDate!=null and startDate!='' ">
+					AND CREATE_TIME BETWEEN #{startDate} AND #{endDate}
+				</if>
+			</if>
+			<if test="timeType == 2">
+				<if test="startDate!=null and startDate!='' ">
+					AND TRANS_TIME BETWEEN #{startDate} AND #{endDate}
+				</if>
+			</if>
+			<if test="moneyFlow!=null and tradeType == null">
+				AND TRANS_TYPE IN
+				<foreach collection="tradeTypes" index="index" item="item" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+			<if test="moneyFlow!=null and tradeType != null">
+				AND TRANS_TYPE =#{tradeType}
+			</if>
+			<if test="transCode != null and transCode != '' ">
+				AND TRANS_CODE =#{transCode}
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 分页获取用户交易记录 -->
+	<select id="findUserTransListByPage" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.pay.vo.TransParamVO">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_USER
+		<include refid="common_where" />
+		ORDER BY ID DESC limit #{currentResult},#{showCount}
+	</select>
+
+	<!-- 分页获取用户交易记录 -->
+	<select id="findListByPage" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.pay.vo.TransParamVO">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_USER
+		<include refid="common_where" />
+		ORDER BY ID DESC limit #{showCount}
+	</select>
+
+	<!-- 获取符合条件的记录 -->
+	<select id="findUserTransListCount" resultType="int" parameterType="com.hhly.skeleton.pay.vo.TransParamVO">
+		SELECT count(1) FROM TRANS_USER
+		<include refid="common_where" />
+	</select>
+
+	<!--根据交易编号获取交易详情 -->
+	<select id="findTransUserByCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_USER where USER_ID = #{userId} and TRANS_CODE = #{transCode}
+	</select>
+
+	<!-- 根据订单号[交易类型]获取用户的交易记录 -->
+	<select id="getUserTransRecordByOrderCode" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.pay.vo.TransUserVO">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_USER where 1=1
+		<if test="userId != null">
+			AND USER_ID = #{userId}
+		</if>
+		<if test="orderCode != null">
+			AND ORDER_CODE = #{orderCode}
+		</if>
+		<if test="transType != null">
+			AND TRANS_TYPE = #{transType}
+		</if>
+		<if test="transStatus != null">
+			AND TRANS_STATUS = #{transStatus}
+		</if>
+		ORDER BY ID DESC
+	</select>
+
+	<!-- 根据订单号[交易类型]获取用户合买的交易记录 -->
+	<select id="getOrderGroupTransRecord" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_USER where 1 = 1
+		<if test="list != null">
+			AND ORDER_CODE in
+			<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+				#{item}
+			</foreach>
+		</if>
+		<if test="transType != null">
+			AND TRANS_TYPE = #{transType}
+		</if>
+		<if test="transStatus != null">
+			AND TRANS_STATUS = #{transStatus}
+		</if>
+	</select>
+
+	<!--根据交易编号获取交易详情 -->
+	<select id="findTransUserByTradeCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_USER where TRADE_CODE = #{tradeCode} limit 1
+	</select>
+
+	<!--查询交易记录供自动审核提款 -->
+	<select id="findTransUserListForAutoCheck" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_USER where ID <![CDATA[ < ]]>
+		#{maxId} and USER_ID = #{userId} ORDER BY ID DESC limit #{limit}
+	</select>
+
+
+	<!-- 添加用户交易记录 -->
+	<insert id="addUserTrans" parameterType="com.hhly.paycore.po.TransUserPO">
+		insert into TRANS_USER (
+		<include refid="add_column" />
+		)
+		values (
+		<include refid="add_value" />
+		)
+	</insert>
+
+	<!-- 批量添加 -->
+	<insert id="addUserTransBatch" parameterType="java.util.List">
+		insert into TRANS_USER (
+		<include refid="add_column" />
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.userId,jdbcType=INTEGER},#{item.transCode,jdbcType=VARCHAR},#{item.orderCode,jdbcType=VARCHAR},#{item.transType,jdbcType=INTEGER},#{item.orderInfo,jdbcType=VARCHAR},
+			NOW(),NOW(),NOW(),#{item.transAmount,jdbcType=DECIMAL},#{item.cashAmount,jdbcType=DECIMAL},#{item.redTransAmount,jdbcType=DECIMAL},#{item.transStatus,jdbcType=INTEGER},
+			#{item.channelId,jdbcType=VARCHAR},#{item.thirdTransId,jdbcType=VARCHAR},#{item.serviceCharge,jdbcType=DECIMAL},NOW(),NOW(),#{item.totalCashBalance,jdbcType=DECIMAL},
+			#{item.amount80,jdbcType=DECIMAL},#{item.amount20,jdbcType=DECIMAL},#{item.amountWin,jdbcType=DECIMAL},#{item.redCode,jdbcType=VARCHAR},#{item.tradeCode,jdbcType=VARCHAR},
+			#{item.remark,jdbcType=VARCHAR},#{item.agentCode,jdbcType=VARCHAR},#{item.sourceType,jdbcType=INTEGER},#{item.totalRedBalance,jdbcType=DECIMAL},#{item.awardFlag,jdbcType=INTEGER}
+			)
+		</foreach>
+	</insert>
+
+	<!--根据订单编号获取交易详情 -->
+	<select id="findTransUserByOrderCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_USER where ORDER_CODE = #{orderCode} limit 1
+	</select>
+
+	<!--根据交易编号和交易状态查询交易记录 -->
+	<select id="getTransUserBy" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_USER where TRADE_CODE = #{tradeCode} and TRANS_STATUS = #{transStatus} ORDER BY ID DESC LIMIT 1
+	</select>
+
+	<!--根据交易编号和交易状态查询交易记录 -->
+	<select id="getTransUserByType" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_USER where TRADE_CODE = #{tradeCode} and TRANS_STATUS = #{transStatus} and TRANS_TYPE = #{transType} ORDER
+		BY ID DESC LIMIT 1
+	</select>
+
+	<select id="queryChannelRechargeList" parameterType="com.hhly.skeleton.task.order.vo.OrderChannelVO" resultType="com.hhly.skeleton.pay.channel.bo.ChannelRechargeBO">
+		SELECT
+		tr.trans_recharge_code transRechargeCode,
+		tr.trans_status transStatus,
+		tr.arrival_amount arrivalAmount,
+		tr.trans_time transTime,
+		tr.recharge_platform platform,
+		mui.channel_open_id
+		FROM trans_recharge tr LEFT JOIN m_user_info
+		mui ON tr.user_id = mui.id WHERE tr.channel_id IN
+		(SELECT channel_id FROM
+		cooperate_agency ca WHERE 1=1
+		<choose>
+			<when test="channelTopId !=null">
+				AND ca.market_channel_id = #{channelTopId}
+			</when>
+			<otherwise>
+				AND ca.market_channel_id = (SELECT * FROM (SELECT market_channel_id FROM cooperate_agency WHERE channel_id
+				= #{channelId}) ch)
+			</otherwise>
+		</choose>
+		)
+		<if test="userId!=null">
+			AND tr.user_id = #{userId}
+		</if>
+	</select>
+
+	<!--修改交易基本信息 -->
+	<update id="updateTransUserInfo" parameterType="com.hhly.paycore.po.TransUserPO">
+		UPDATE TRANS_USER
+		<set>
+			TRANS_END_TIME = NOW(),
+			TRANS_TIME = NOW(),
+			THIRD_TRANS_TIME = NOW(),
+			<if test="transStatus != null">
+				TRANS_STATUS = #{transStatus, jdbcType=INTEGER},
+			</if>
+			<if test="thirdTransId != null">
+				THIRD_TRANS_ID = #{thirdTransId, jdbcType=VARCHAR},
+			</if>
+			UPDATE_TIME = NOW(),
+		</set>
+		WHERE ID = #{id, jdbcType=INTEGER}
+	</update>
+
+	<!-- 批量更新交易流水的状态，主要是修改提款交易记录的状态 -->
+	<update id="updateTransUserByBatch" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			update TRANS_USER t
+			<set>
+				t.UPDATE_TIME = NOW(),
+				t.TRANS_STATUS = #{item.transStatus,jdbcType=INTEGER},
+			</set>
+			where t.TRADE_CODE = #{item.tradeCode,jdbcType=VARCHAR} and t.TRANS_TYPE = #{item.transType,jdbcType=SMALLINT}
+		</foreach>
+	</update>
+
+	<update id="updateAwardFlagById">
+		UPDATE TRANS_USER set UPDATE_TIME = NOW(), AWARD_FLAG = #{awardFlag, jdbcType=INTEGER} WHERE ID =
+		#{id, jdbcType=INTEGER}
+	</update>
+</mapper>

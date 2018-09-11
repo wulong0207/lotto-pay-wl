@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hhly.paycore.dao.TicketInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.hhly.skeleton.cms.ticketmgr.bo.TicketInfoBO">
+        <id column="ID" jdbcType="DECIMAL" property="id"/>
+        <result column="LOTTERY_CODE" jdbcType="DECIMAL" property="lotteryCode"/>
+        <result column="LOTTERY_NAME" jdbcType="VARCHAR" property="lotteryName"/>
+        <result column="LOTTERY_ISSUE" jdbcType="VARCHAR" property="lotteryIssue"/>
+        <result column="ISSUE_CODE" jdbcType="VARCHAR" property="issueCode"/>
+        <result column="USER_ID" jdbcType="BIGINT" property="userId"/>
+        <result column="TICKET_STATUS" jdbcType="SMALLINT" property="ticketStatus"/>
+        <result column="TICKET_MONEY" jdbcType="DECIMAL" property="ticketMoney"/>
+        <result column="CHANNEL_ID" jdbcType="VARCHAR" property="channelId"/>
+        <result column="ORDER_CODE" jdbcType="VARCHAR" property="orderCode"/>
+        <result column="WINNING_STATUS" jdbcType="SMALLINT" property="winningStatus"/>
+        <result column="PRE_BONUS" jdbcType="DECIMAL" property="preBonus"/>
+        <result column="AFT_BONUS" jdbcType="DECIMAL" property="aftBonus"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="END_TICKET_TIME" jdbcType="TIMESTAMP" property="endTicketTime"/>
+        <result column="SEND_CHANNEL_TIME" jdbcType="TIMESTAMP" property="sendChannelTime"/>
+        <result column="COME_OUT_TIME" jdbcType="TIMESTAMP" property="comeOutTime"/>
+        <result column="RECEIPT_TIME" jdbcType="TIMESTAMP" property="receiptTime"/>
+        <result column="LOTTERY_TIME" jdbcType="TIMESTAMP" property="lotteryTime"/>
+        <result column="CONTENT_TYPE" jdbcType="SMALLINT" property="contentType"/>
+        <result column="SEND_TIME" jdbcType="TIMESTAMP" property="sendTime"/>
+        <result column="BUY_SCREEN" jdbcType="VARCHAR" property="buyScreen"/>
+        <result column="LOTTO_ADD" jdbcType="SMALLINT" property="lottoAdd"/>
+        <result column="ACTIVITY_SOURCE" jdbcType="VARCHAR" property="activitySource"/>
+        <result column="BATCH_NUM" jdbcType="VARCHAR" property="batchNum"/>
+        <result column="OFFICIAL_NUM" jdbcType="VARCHAR" property="officialNum"/>
+        <result column="WINNING_DETAIL" jdbcType="VARCHAR" property="winningDetail"/>
+        <result column="MULTIPLE_NUM" jdbcType="DECIMAL" property="multipleNum"/>
+        <result column="ADDED_BONUS" jdbcType="DECIMAL" property="addedBonus"/>
+        <result column="RED_CODE" jdbcType="VARCHAR" property="redCode"/>
+        <result column="THIRD_NUM" jdbcType="VARCHAR" property="thirdNum"/>
+        <result column="CHANNEL_REMARK" jdbcType="VARCHAR" property="channelRemark"/>
+        <result column="TICKET_CHANGE" jdbcType="VARCHAR" property="ticketChange"/>
+        <result column="TICKET_CONTENT" jdbcType="VARCHAR" property="ticketContent"/>
+        <result column="RECEIPT_CONTENT" jdbcType="VARCHAR" property="receiptContent"/>
+        <result column="TICKET_IMG" jdbcType="VARCHAR" property="ticketImg"/>
+        <result column="TICKET_IMG_TXT" jdbcType="VARCHAR" property="ticketImgTxt"/>
+        <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="MODIFY_BY" jdbcType="VARCHAR" property="modifyBy"/>
+        <result column="TICKET_REMARK" jdbcType="VARCHAR" property="ticketRemark"/>
+    </resultMap>
+
+    <sql id="base_column">
+		ID,
+        LOTTERY_CODE,
+        LOTTERY_NAME,
+        LOTTERY_ISSUE,
+        USER_ID,
+        TICKET_STATUS,
+        TICKET_MONEY,
+        CHANNEL_ID,
+        ORDER_CODE,
+        WINNING_STATUS,
+        PRE_BONUS,
+        AFT_BONUS,
+        CREATE_TIME,
+        END_TICKET_TIME,
+        SEND_CHANNEL_TIME,
+        COME_OUT_TIME,
+        RECEIPT_TIME,
+        LOTTERY_TIME,
+        CONTENT_TYPE,
+        SEND_TIME,
+        BUY_SCREEN,
+        LOTTO_ADD,
+        ACTIVITY_SOURCE,
+        BATCH_NUM,
+        OFFICIAL_NUM,
+        WINNING_DETAIL,
+        MULTIPLE_NUM,
+        ADDED_BONUS,
+        RED_CODE,
+        THIRD_NUM,
+        CHANNEL_REMARK,
+        TICKET_CHANGE,
+        TICKET_CONTENT,
+        RECEIPT_CONTENT,
+        TICKET_IMG,
+        TICKET_IMG_TXT,
+        MODIFY_TIME,
+        MODIFY_BY,
+        TICKET_REMARK,
+        BATCH_NUM_SEQ,
+        LOTTERY_CHILD_CODE,
+        SALE_TIME,
+        CHANNEL_ALLOCATION_SEND_TIME,
+        START_MATCH_TIME
+	</sql>
+
+    <sql id="common_where">
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="orderCode != null and orderCode !='' ">
+                AND ORDER_CODE = #{orderCode}
+            </if>
+            <if test="winningStatus != null and winningStatus !='' ">
+                AND WINNING_STATUS = #{winningStatus}
+            </if>
+        </trim>
+    </sql>
+
+    <!-- 获取追号期数详情 -->
+    <select id="getTickets" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.cms.ticketmgr.bo.TicketInfoBO">
+        SELECT
+        <include refid="base_column"/>
+        FROM TICKET_INFO
+        <include refid="common_where"/>
+    </select>
+
+    <update id="updateTicketInfo" parameterType="com.hhly.skeleton.cms.ticketmgr.bo.TicketInfoBO">
+        update TICKET_INFO
+        <set>
+            UPDATE_TIME = NOW(),
+            <if test="addStatus != null">
+                WINNING_STATUS = #{winningStatus,jdbcType=SMALLINT},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=DECIMAL}
+    </update>
+
+</mapper>

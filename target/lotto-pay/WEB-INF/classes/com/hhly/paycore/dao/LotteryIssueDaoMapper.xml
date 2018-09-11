@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hhly.paycore.dao.LotteryIssueDaoMapper">
+
+	<!-- 前端接口：用户中心-查询低频彩等待出票的官方出票时间段 -->
+	<select id="findNumOfficialTime" parameterType="com.hhly.skeleton.lotto.base.lottery.vo.LotteryVO" resultType="com.hhly.skeleton.lotto.base.issue.bo.IssueOfficialTimeBO">
+		select to_char(li.official_start_time, 'hh24:mi') officialStartTimeStr,
+		to_char(li.official_end_time, 'hh24:mi') officialEndTimeStr
+		from LOTTERY_ISSUE li
+		where lottery_code = #{lotteryCode,jdbcType=INTEGER}
+		and current_issue = 1
+		and rownum = 1
+	</select>
+	<!-- 前端接口：用户中心-查询高频彩等待出票的官方出票时间段 -->
+	<select id="findHighOfficialTime" parameterType="com.hhly.skeleton.lotto.base.lottery.vo.LotteryVO" resultType="com.hhly.skeleton.lotto.base.issue.bo.IssueOfficialTimeBO">
+		select to_char(min(li.official_start_time), 'hh24:mi') officialStartTimeStr,
+		to_char(max(li.official_end_time), 'hh24:mi') officialEndTimeStr
+		from LOTTERY_ISSUE li
+		where lottery_code = #{lotteryCode,jdbcType=INTEGER}
+		and trunc(li.official_start_time) = trunc(now()) - 1
+	</select>
+	<!-- 前端接口：用户中心-查询竞技彩等待出票的官方出票时间段 -->
+	<select id="findSportOfficialTime" parameterType="com.hhly.skeleton.lotto.base.lottery.vo.LotteryVO" resultType="com.hhly.skeleton.lotto.base.issue.bo.IssueOfficialTimeBO">
+		select officialStartTime, officialEndTime
+		from (select li.official_start_time officialStartTime,
+		li.official_end_time officialEndTime,
+		row_number() over(order by li.issue_code desc) rn
+		from LOTTERY_ISSUE li
+		where li.lottery_code = #{lotteryCode,jdbcType=INTEGER}
+		and li.issue_code <![CDATA[ < ]]>
+		(select li.issue_code
+		from LOTTERY_ISSUE li
+		where lottery_code = #{lotteryCode,jdbcType=INTEGER}
+		and current_issue = 1
+		and rownum = 1))
+		where rn = 1
+
+		union all
+
+		select li.official_start_time officialStartTime,
+		li.official_end_time officialEndTime
+		from LOTTERY_ISSUE li
+		where lottery_code = #{lotteryCode,jdbcType=INTEGER}
+		and current_issue = 1
+		and rownum = 1
+	</select>
+</mapper>

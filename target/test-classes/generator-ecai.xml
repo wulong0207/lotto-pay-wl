@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- 数据库驱动包位置 -->
+	<classPathEntry location="D:\maven\repo\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar" />
+	<context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
+		<!-- 关闭注释 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!-- 数据库链接URL、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.74.170:3306/lotto"
+			userId="lotto" password="oRcl_123">
+			<!-- <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@192.168.10.27/ecai88" 
+				userId="lotto" password="oRcl_123"> -->
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!-- 生成实体类的包名和位置，这里配置将生成的实体类放在bam.domain这个包下 -->
+		<javaModelGenerator targetPackage="com.hhly.skeleton.pay.agent.po" targetProject="lotto-pay">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- 生成的SQL映射文件包名和位置，这里配置将生成的SQL映射文件放在bam.mapping这个包下 -->
+		<sqlMapGenerator targetPackage="com.hhly.skeleton.pay.agent.dao" targetProject="lotto-pay">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- 生成DAO的包名和位置，这里配置将生成的dao类放在bam.dao这个包下 -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.hhly.skeleton.pay.agent.dao"
+			targetProject="lotto-pay">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
+		<!-- <table tableName="TRANS_USER" domainObjectName="TransUserPO" enableCountByExample="true" enableUpdateByExample="true" 
+			enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true" /> <table tableName="TRANS_RECHARGE" 
+			domainObjectName="TransRechargePO" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
+			enableSelectByExample="true" selectByExampleQueryId="true" /> <table tableName="TRANS_TAKEN" domainObjectName="TransTakenPO" 
+			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true" 
+			/> -->
+
+		<table tableName="order_group" domainObjectName="OrderGroupBo" enableCountByExample="true"
+			enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true" />
+		<table tableName="order_group_content" domainObjectName="OrderGroupContentBo" enableCountByExample="true"
+			enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true" />
+
+		<!-- java -jar D:\ProFiles\mybatis-generator-core-1.3.2.jar -configfile F:\src\LotteryCMS\src\main\resources\generator.xml 
+			-overwrite -->
+		<!-- java -jar D:\ProFile\tomcat\webapps\LotteryCMS\WEB-INF\lib\mybatis-generator-core-1.3.2.jar -configfile D:\newJavaWork\LotteryCMS\src\main\resources\generator.xml 
+			-overwrite -->
+	</context>
+</generatorConfiguration>

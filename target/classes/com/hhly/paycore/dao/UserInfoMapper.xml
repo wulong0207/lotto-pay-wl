@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.UserInfoMapper">
+	<resultMap type="com.hhly.skeleton.user.bo.UserInfoBO" id="BaseResultMap">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="ACCOUNT_ID" property="accountId" jdbcType="VARCHAR" />
+		<result column="ACCOUNT_NAME" property="account" jdbcType="VARCHAR" />
+		<result column="ACCOUNT_PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="RCODE" property="rCode" jdbcType="VARCHAR" />
+		<result column="NICK_NAME" property="nickname" jdbcType="VARCHAR" />
+		<result column="HEAD_URL" property="headUrl" jdbcType="VARCHAR" />
+		<result column="HEAD_STATUS" property="headStatus" jdbcType="INTEGER" />
+		<result column="ACCOUNT_STATUS" property="accountStatus" jdbcType="INTEGER" />
+		<result column="CUS_MOBILE" property="mobile" jdbcType="VARCHAR" />
+		<result column="MOBILE_CHECK" property="mobileStatus" jdbcType="INTEGER" />
+		<result column="MOBILE_LOGIN" property="isMobileLogin" jdbcType="INTEGER" />
+		<result column="CUS_MAIL" property="email" jdbcType="VARCHAR" />
+		<result column="EMAIL_CHECK" property="emailStatus" jdbcType="INTEGER" />
+		<result column="EMAIL_LOGIN" property="isEmailLogin" jdbcType="INTEGER" />
+		<result column="ACTUAL_NAME" property="realName" jdbcType="VARCHAR" />
+		<result column="ID_NUM" property="idCard" jdbcType="VARCHAR" />
+		<result column="SEX" property="sex" jdbcType="INTEGER" />
+		<result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+		<result column="REGIST_TIME" property="registerTime" jdbcType="TIMESTAMP" />
+		<result column="LAST_LOGIN_TIME" property="lastLoginTime" jdbcType="TIMESTAMP" />
+		<result column="CHANNEL_ID" property="channelId" jdbcType="VARCHAR" />
+		<result column="IP" property="ip" jdbcType="VARCHAR" />
+		<result column="ACCOUNT_MODIFY" property="accountModify" jdbcType="INTEGER" />
+		<result column="USER_PAY_ID" property="userPayId" jdbcType="INTEGER" />
+		<result column="QQ_OPEN_ID" property="qqOpenID" jdbcType="VARCHAR" />
+		<result column="WECHAT_OPEN_ID" property="wechatOpenID" jdbcType="VARCHAR" />
+		<result column="SINA_BLOG_OPEN_ID" property="sinaBlogOpenID" jdbcType="VARCHAR" />
+		<result column="BAIDU_OPEN_ID" property="baiduOpenID" jdbcType="VARCHAR" />
+		<result column="ALIPAY_OPEN_ID" property="alipayOpenID" jdbcType="VARCHAR" />
+		<result column="JD_OPEN_ID" property="jdOpenID" jdbcType="VARCHAR" />
+		<result column="QQ_NAME" property="qqName" jdbcType="VARCHAR" />
+		<result column="WECHAT_NAME" property="wechatName" jdbcType="VARCHAR" />
+		<result column="SINA_NAME" property="sinaName" jdbcType="VARCHAR" />
+		<result column="APP_NOT_DISTURB" property="appNotDisturb" jdbcType="VARCHAR" />
+		<result column="MSG_APP" property="msgApp" jdbcType="INTEGER" />
+		<result column="PLATFORM" property="platform" jdbcType="INTEGER" />
+		<result column="TOTAL_CASH_BALANCE" jdbcType="DECIMAL" property="userWalletBalance" />
+		<result column="EFF_RED_BALANCE" jdbcType="DOUBLE" property="redPackBalance" />
+		<result column="USER_PAY_CARDCODE" jdbcType="VARCHAR" property="userPayCardcode" />
+		<result column="USER_TYPE" jdbcType="INTEGER" property="userType" />
+		<result column="AGENT_CODE" jdbcType="VARCHAR" property="agentCode" />
+	</resultMap>
+	<sql id="base_column">
+		ID,ACCOUNT_ID,ACCOUNT_NAME,CUS_MOBILE,CUS_MAIL,MOBILE_LOGIN,EMAIL_LOGIN,NICK_NAME,ACCOUNT_PASSWORD,PASSWORD_GRADE,SEX,ACTUAL_NAME,ID_NUM,HEAD_URL,HEAD_STATUS,ADDRESS,CHANNEL_ID,
+		REGIST_TIME,LAST_LOGIN_TIME,ACCOUNT_STATUS,QQ_OPEN_ID,SINA_BLOG_OPEN_ID,BAIDU_OPEN_ID,WECHAT_OPEN_ID,ALIPAY_OPEN_ID,JD_OPEN_ID,MOBILE_CHECK,EMAIL_CHECK,ACCOUNT_MODIFY,MODIFY_BY,
+		MODIFY_TIME,UPDATE_TIME,CREATE_TIME,REMARK,RCODE,HEAD_CHECK,IP,USER_PAY_ID,MSG_MOB,MSG_SITE,MSG_APP,MSG_WECHAT,MOB_NOT_DISTURB,APP_NOT_DISTURB,QQ_NAME,WECHAT_NAME,SINA_NAME,PLATFORM,
+		CHANNEL_OPEN_ID,USER_PAY_CARDCODE,AGENT_CODE,USER_TYPE
+	</sql>
+
+
+	<!--根据用户ID获取用户信息 -->
+	<select id="getUserInfo" resultMap="BaseResultMap" parameterType="int">
+		SELECT
+		<include refid="base_column" />
+		FROM M_USER_INFO WHERE ID = #{id, jdbcType=INTEGER} LIMIT 1
+	</select>
+
+	<!--根据用户账户获取用户信息 -->
+	<select id="getUserByAccountName" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="base_column" />
+		FROM M_USER_INFO WHERE ACCOUNT_NAME = #{accountName, jdbcType=VARCHAR} LIMIT 1
+	</select>
+
+	<!-- 修改用户基本信息 -->
+	<update id="updateUserInfo" parameterType="com.hhly.paycore.po.UserInfoPO">
+		UPDATE M_USER_INFO
+		<set>
+			<if test="account != null">
+				ACCOUNT_NAME = #{account, jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				ACCOUNT_PASSWORD = #{password, jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null">
+				CUS_MOBILE = #{mobile, jdbcType=VARCHAR},
+			</if>
+			<if test="isMobileLogin != null">
+				MOBILE_LOGIN = #{isMobileLogin, jdbcType=INTEGER},
+			</if>
+			<if test="mobileStatus != null">
+				MOBILE_CHECK = #{mobileStatus, jdbcType=INTEGER},
+			</if>
+			<if test="email != null">
+				CUS_MAIL = #{email, jdbcType=VARCHAR},
+			</if>
+			<if test="isEmailLogin != null">
+				EMAIL_LOGIN = #{isEmailLogin, jdbcType=INTEGER},
+			</if>
+			<if test="emailStatus != null">
+				EMAIL_CHECK = #{emailStatus, jdbcType=INTEGER},
+			</if>
+			<if test="accountModify != null">
+				ACCOUNT_MODIFY = #{accountModify, jdbcType=INTEGER},
+			</if>
+			<if test="realName != null">
+				ACTUAL_NAME = #{realName, jdbcType=VARCHAR},
+			</if>
+			<if test="idCard != null">
+				ID_NUM = #{idCard, jdbcType=VARCHAR},
+			</if>
+			<if test="rCode != null">
+				RCODE = #{rCode, jdbcType=VARCHAR},
+			</if>
+			<if test="userPayId != null">
+				USER_PAY_ID = #{userPayId, jdbcType=INTEGER},
+			</if>
+			<if test="qqOpenID != null">
+				QQ_OPEN_ID = #{qqOpenID},
+			</if>
+			<if test="wechatOpenID != null">
+				WECHAT_OPEN_ID = #{wechatOpenID},
+			</if>
+			<if test="qqName != null">
+				QQ_NAME = #{qqName},
+			</if>
+			<if test="wechatName != null">
+				WECHAT_NAME = #{wechatName},
+			</if>
+			<if test="headUrl != null">
+				HEAD_URL = #{headUrl},
+			</if>
+			<if test="appNotDisturb != null">
+				APP_NOT_DISTURB = #{appNotDisturb},
+			</if>
+			<if test="msgApp != null">
+				MSG_APP = #{msgApp},
+			</if>
+			<if test="userPayCardcode != null">
+				USER_PAY_CARDCODE = #{userPayCardcode},
+			</if>
+		</set>
+		WHERE ID = #{id, jdbcType=INTEGER}
+	</update>
+
+
+</mapper>

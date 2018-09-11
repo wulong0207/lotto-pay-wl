@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.TransRechargeMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.TransRechargeBO">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="TRANS_RECHARGE_CODE" jdbcType="VARCHAR" property="transRechargeCode" />
+		<result column="RECHARGE_CHANNEL" jdbcType="SMALLINT" property="rechargeChannel" />
+		<result column="PAY_TYPE" jdbcType="SMALLINT" property="payType" />
+		<result column="RECHARGE_BANK" jdbcType="INTEGER" property="rechargeBank" />
+		<result column="BANK_CARD_TYPE" jdbcType="SMALLINT" property="bankCardType" />
+		<result column="BANK_CARD_NUM" jdbcType="VARCHAR" property="bankCardNum" />
+		<result column="TRANS_TIME" jdbcType="TIMESTAMP" property="transTime" />
+		<result column="TRANS_END_TIME" jdbcType="TIMESTAMP" property="transEndTime" />
+		<result column="THIRD_TRANS_TIME" jdbcType="TIMESTAMP" property="thirdTransTime" />
+		<result column="RESPONSE_TIME" jdbcType="TIMESTAMP" property="responseTime" />
+		<result column="USER_ID" jdbcType="INTEGER" property="userId" />
+		<result column="RECHARGE_AMOUNT" jdbcType="DECIMAL" property="rechargeAmount" />
+		<result column="ARRIVAL_AMOUNT" jdbcType="DECIMAL" property="arrivalAmount" />
+		<result column="SERVICE_CHARGE" jdbcType="DECIMAL" property="serviceCharge" />
+		<result column="RECHARGE_REMARK" jdbcType="VARCHAR" property="rechargeRemark" />
+		<result column="TRANS_STATUS" jdbcType="SMALLINT" property="transStatus" />
+		<result column="RECHARGE_PLATFORM" jdbcType="SMALLINT" property="rechargePlatform" />
+		<result column="CHANNEL_ID" jdbcType="VARCHAR" property="channelId" />
+		<result column="THIRD_TRANS_NUM" jdbcType="VARCHAR" property="thirdTransNum" />
+		<result column="RED_AMOUNT" jdbcType="DECIMAL" property="redAmount" />
+		<result column="SUPPLEMENT_BY" jdbcType="VARCHAR" property="supplementBy" />
+		<result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+		<result column="MODIFY_BY" jdbcType="VARCHAR" property="modifyBy" />
+		<result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+		<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="ORDER_CODE" jdbcType="VARCHAR" property="orderCode" />
+		<result column="RED_CODE" jdbcType="VARCHAR" property="redCode" />
+		<result column="CHANNEL_CODE" jdbcType="VARCHAR" property="channelCode" />
+		<result column="IN_WALLET" jdbcType="DECIMAL" property="inWallet" />
+		<result column="SWITCH_STATUS" jdbcType="SMALLINT" property="switchStatus" />
+		<result column="ACTIVITY_CODE" jdbcType="VARCHAR" property="activityCode" />
+		<result column="TAKEN_STATUS" jdbcType="SMALLINT" property="takenStatus" />
+		<result column="RECHARGE_TYPE" jdbcType="SMALLINT" property="rechargeType" />
+		<result column="PAY_CHANNEL_ID" jdbcType="INTEGER" property="payChannelId" />
+	</resultMap>
+
+	<sql id="base_column">
+		ID,
+		<include refid="add_column" />
+	</sql>
+
+	<sql id="add_column">
+		TRANS_RECHARGE_CODE,ORDER_CODE,RECHARGE_CHANNEL,PAY_TYPE,RECHARGE_BANK,BANK_CARD_TYPE,BANK_CARD_NUM,TRANS_TIME,TRANS_END_TIME,THIRD_TRANS_TIME,RESPONSE_TIME,
+		USER_ID,RECHARGE_AMOUNT,ARRIVAL_AMOUNT,SERVICE_CHARGE,RECHARGE_REMARK,TRANS_STATUS,RECHARGE_PLATFORM,CHANNEL_ID,THIRD_TRANS_NUM,RED_AMOUNT,SUPPLEMENT_BY,MODIFY_TIME,
+		MODIFY_BY,CREATE_BY,UPDATE_TIME,CREATE_TIME,REMARK,RED_CODE,CHANNEL_CODE,IN_WALLET,SWITCH_STATUS,ACTIVITY_CODE,TAKEN_STATUS,RECHARGE_TYPE,PAY_CHANNEL_ID
+	</sql>
+
+	<sql id="add_value">#{transRechargeCode,jdbcType=VARCHAR},#{orderCode,jdbcType=VARCHAR},#{rechargeChannel,jdbcType=INTEGER},#{payType,jdbcType=INTEGER},
+		#{rechargeBank,jdbcType=INTEGER},#{bankCardType,jdbcType=INTEGER},#{bankCardNum,jdbcType=VARCHAR},NOW(),#{transEndTime,jdbcType=TIMESTAMP},NOW(),NOW(),#{userId,jdbcType=INTEGER},
+		#{rechargeAmount,jdbcType=DECIMAL},#{arrivalAmount,jdbcType=DECIMAL},#{serviceCharge,jdbcType=DECIMAL},#{rechargeRemark,jdbcType=VARCHAR},#{transStatus,jdbcType=INTEGER},
+		#{rechargePlatform,jdbcType=INTEGER},#{channelId,jdbcType=VARCHAR},#{thirdTransNum,jdbcType=VARCHAR},#{redAmount,jdbcType=DECIMAL},#{supplementBy,jdbcType=VARCHAR},NOW(),#{modifyBy,jdbcType=VARCHAR},
+		#{createBy,jdbcType=VARCHAR},NOW(),NOW(),#{remark,jdbcType=VARCHAR},#{redCode,jdbcType=VARCHAR},#{channelCode,jdbcType=VARCHAR},#{inWallet,jdbcType=DECIMAL},#{switchStatus,jdbcType=SMALLINT},
+		#{activityCode,jdbcType=VARCHAR},#{takenStatus,jdbcType=SMALLINT},#{rechargeType,jdbcType=SMALLINT},#{payChannelId,jdbcType=INTEGER}
+	</sql>
+
+	<sql id="common_where">
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="userId > 0">
+				AND USER_ID = #{userId}
+			</if>
+			<if test="transStatus != null">
+				AND TRANS_STATUS = #{transStatus}
+			</if>
+			<if test="rechargePlatform !=null and rechargePlatform !='' ">
+				AND RECHARGE_PLATFORM = #{rechargePlatform}
+			</if>
+			<if test="thirdTransNum !=null and thirdTransNum !='' ">
+				AND THIRD_TRANS_NUM = #{thirdTransNum}
+			</if>
+			<if test="timeType !=null">
+				<if test="timeType == 1">
+					<if test="startDate!=null and startDate!='' ">
+						AND CREATE_TIME BETWEEN #{startDate} AND #{endDate}
+					</if>
+				</if>
+				<if test="timeType == 2">
+					<if test="startDate!=null and startDate!='' ">
+						AND TRANS_TIME BETWEEN #{startDate} AND #{endDate}
+					</if>
+				</if>
+			</if>
+			<if test="transCode !=null and transCode !='' ">
+				AND TRANS_RECHARGE_CODE = #{transCode}
+			</if>
+			<if test="takenStatus != null">
+				AND TAKEN_STATUS = #{takenStatus}
+			</if>
+			<if test="excludeChannels !=null">
+				AND RECHARGE_CHANNEL NOT IN
+				<foreach collection="excludeChannels" item="item" index="index" open="(" close=")" separator=",">
+					#{item}
+				</foreach>
+			</if>
+		</trim>
+	</sql>
+
+	<select id="getRechargeListByPage" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.pay.vo.TransParamVO">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_RECHARGE
+		<include refid="common_where" />
+		ORDER BY ID DESC limit #{currentResult},#{showCount}
+	</select>
+
+	<select id="getRechargeListCount" resultType="int" parameterType="com.hhly.skeleton.pay.vo.TransParamVO">
+		SELECT count(1) FROM TRANS_RECHARGE
+		<include refid="common_where" />
+	</select>
+
+	<select id="getByTransRecharge" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.pay.vo.TransRechargeVO">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_RECHARGE
+		<include refid="common_where" />
+	</select>
+
+	<!-- 供任务关闭30分钟未充值查询 -->
+	<select id="getRechargeByParam" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_RECHARGE where trans_end_time <![CDATA[<=]]>
+		#{endSaleDate} and trans_status = #{tradeStatus} ORDER BY ID limit #{showCount}
+	</select>
+
+
+	<!-- 通过用户ID和充值流水号查找交易记录 -->
+	<select id="getUserRechargeByCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_RECHARGE where USER_ID = #{userId} and TRANS_RECHARGE_CODE = #{rechargeCode}
+	</select>
+	<!-- 根据交易流水号获取交易记录 -->
+	<select id="getRechargeByCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_RECHARGE where TRANS_RECHARGE_CODE = #{rechargeCode}
+	</select>
+
+	<!-- 添加用户充值记录 -->
+	<insert id="addRechargeTrans" parameterType="com.hhly.paycore.po.TransRechargePO">
+		insert into TRANS_RECHARGE (
+		<include refid="add_column" />
+		)
+		values (
+		<include refid="add_value" />
+		)
+	</insert>
+
+	<!-- 批量添加 -->
+	<insert id="addRechargeTransList" parameterType="java.util.List">
+		insert into TRANS_RECHARGE (
+		<include refid="add_column" />
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.transRechargeCode,jdbcType=VARCHAR},#{item.orderCode,jdbcType=VARCHAR},#{item.rechargeChannel,jdbcType=INTEGER},#{item.payType,jdbcType=INTEGER},
+			#{item.rechargeBank,jdbcType=INTEGER},#{item.bankCardType,jdbcType=INTEGER},#{item.bankCardNum,jdbcType=VARCHAR},NOW(),NOW(),NOW(),NOW(),
+			#{item.userId,jdbcType=INTEGER},#{item.rechargeAmount,jdbcType=DECIMAL},#{item.arrivalAmount,jdbcType=DECIMAL},#{item.serviceCharge,jdbcType=DECIMAL},
+			#{item.rechargeRemark,jdbcType=VARCHAR},#{item.transStatus,jdbcType=INTEGER},#{item.rechargePlatform,jdbcType=INTEGER},#{item.channelId,jdbcType=VARCHAR},
+			#{item.thirdTransNum,jdbcType=VARCHAR},#{item.redAmount,jdbcType=DECIMAL},#{item.supplementBy,jdbcType=VARCHAR},NOW(),#{item.modifyBy,jdbcType=VARCHAR},
+			#{item.createBy,jdbcType=VARCHAR},NOW(),NOW(),#{item.remark,jdbcType=VARCHAR},#{item.redCode,jdbcType=VARCHAR},#{item.channelCode,jdbcType=VARCHAR},
+			#{item.inWallet,jdbcType=DECIMAL},#{item.switchStatus,jdbcType=SMALLINT},#{item.activityCode,jdbcType=VARCHAR},#{item.takenStatus,jdbcType=SMALLINT},#{item.rechargeType,jdbcType=SMALLINT},#{item.payChannelId,jdbcType=INTEGER}
+			)
+		</foreach>
+	</insert>
+
+	<!-- 批量更新 -->
+	<update id="updateBatch" parameterType="java.util.List">
+		<!-- <foreach collection="list" item="item" index="index" open="begin" close=";end;" separator=";"> -->
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			update TRANS_RECHARGE t
+			<set>
+				t.UPDATE_TIME = NOW(),
+				t.TRANS_TIME = NOW(),
+				t.MODIFY_TIME = NOW(),
+				<if test="item.thirdTransTime != null">
+					t.THIRD_TRANS_TIME = #{item.thirdTransTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="item.responseTime != null">
+					t.RESPONSE_TIME = #{item.responseTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="item.arrivalAmount != null">
+					t.ARRIVAL_AMOUNT = #{item.arrivalAmount,jdbcType=DECIMAL},
+				</if>
+				<if test="item.serviceCharge != null">
+					t.SERVICE_CHARGE = #{item.serviceCharge,jdbcType=DECIMAL},
+				</if>
+				<if test="item.rechargeRemark != null">
+					t.RECHARGE_REMARK = #{item.rechargeRemark,jdbcType=VARCHAR},
+				</if>
+				<if test="item.transStatus != null">
+					t.TRANS_STATUS = #{item.transStatus,jdbcType=SMALLINT},
+				</if>
+				<if test="item.thirdTransNum != null">
+					t.THIRD_TRANS_NUM = #{item.thirdTransNum,jdbcType=VARCHAR},
+				</if>
+				<if test="item.remark != null">
+					t.REMARK = #{item.remark,jdbcType=VARCHAR},
+				</if>
+				<if test="item.takenStatus != null">
+					t.TAKEN_STATUS = #{item.takenStatus,jdbcType=SMALLINT},
+				</if>
+			</set>
+			where t.ID = #{item.id,jdbcType=INTEGER}
+		</foreach>
+	</update>
+
+
+	<!-- 批量更新充值记录中的提款状态 -->
+	<update id="updateRechargeTakenStatusByBatch" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			update TRANS_RECHARGE t
+			<set>
+				t.UPDATE_TIME = NOW(),
+				t.MODIFY_TIME = NOW(),
+				<if test="item.takenStatus != null">
+					t.TAKEN_STATUS = #{item.takenStatus,jdbcType=SMALLINT},
+				</if>
+			</set>
+			where t.TRANS_RECHARGE_CODE = #{item.transRechargeCode,jdbcType=VARCHAR}
+		</foreach>
+	</update>
+
+	<update id="updateRechargeTrans" parameterType="com.hhly.paycore.po.TransRechargePO">
+		update TRANS_RECHARGE
+		<set>
+			UPDATE_TIME = NOW(),
+			TRANS_TIME = NOW(),
+			MODIFY_TIME = NOW(),
+			<if test="thirdTransTime != null">
+				THIRD_TRANS_TIME = #{thirdTransTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="responseTime != null">
+				RESPONSE_TIME = #{responseTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="arrivalAmount != null">
+				ARRIVAL_AMOUNT = #{arrivalAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="serviceCharge != null">
+				SERVICE_CHARGE = #{serviceCharge,jdbcType=DECIMAL},
+			</if>
+			<if test="rechargeRemark != null">
+				RECHARGE_REMARK = #{rechargeRemark,jdbcType=VARCHAR},
+			</if>
+			<if test="transStatus != null">
+				TRANS_STATUS = #{transStatus,jdbcType=SMALLINT},
+			</if>
+			<if test="thirdTransNum != null">
+				THIRD_TRANS_NUM = #{thirdTransNum,jdbcType=VARCHAR},
+			</if>
+			<if test="inWallet != null">
+				IN_WALLET = #{inWallet,jdbcType=DECIMAL},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="redCode != null">
+				RED_CODE = #{redCode,jdbcType=VARCHAR},
+			</if>
+			<if test="takenStatus != null">
+				TAKEN_STATUS = #{takenStatus,jdbcType=SMALLINT},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="update" parameterType="com.hhly.paycore.po.TransRechargePO">
+		update TRANS_RECHARGE
+		<set>
+			MODIFY_TIME = NOW(),
+			UPDATE_TIME = NOW(),
+			<if test="rechargeChannel != null">
+				RECHARGE_CHANNEL = #{rechargeChannel,jdbcType=DECIMAL},
+			</if>
+			<if test="payType != null">
+				PAY_TYPE = #{payType,jdbcType=DECIMAL},
+			</if>
+			<if test="rechargeBank != null">
+				RECHARGE_BANK = #{rechargeBank,jdbcType=DECIMAL},
+			</if>
+			<if test="bankCardType != null">
+				BANK_CARD_TYPE = #{bankCardType,jdbcType=DECIMAL},
+			</if>
+			<if test="bankCardNum != null">
+				BANK_CARD_NUM = #{bankCardNum,jdbcType=VARCHAR},
+			</if>
+			<if test="transTime != null">
+				TRANS_TIME = #{transTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="transEndTime != null">
+				TRANS_END_TIME = #{transEndTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="thirdTransTime != null">
+				THIRD_TRANS_TIME = #{thirdTransTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="responseTime != null">
+				RESPONSE_TIME = #{responseTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="rechargeAmount != null">
+				RECHARGE_AMOUNT = #{rechargeAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="arrivalAmount != null">
+				ARRIVAL_AMOUNT = #{arrivalAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="serviceCharge != null">
+				SERVICE_CHARGE = #{serviceCharge,jdbcType=DECIMAL},
+			</if>
+			<if test="rechargeRemark != null">
+				RECHARGE_REMARK = #{rechargeRemark,jdbcType=VARCHAR},
+			</if>
+			<if test="transStatus != null">
+				TRANS_STATUS = #{transStatus,jdbcType=DECIMAL},
+			</if>
+			<if test="rechargePlatform != null">
+				RECHARGE_PLATFORM = #{rechargePlatform,jdbcType=DECIMAL},
+			</if>
+			<if test="channelId != null">
+				CHANNEL_ID = #{channelId,jdbcType=VARCHAR},
+			</if>
+			<if test="thirdTransNum != null">
+				THIRD_TRANS_NUM = #{thirdTransNum,jdbcType=VARCHAR},
+			</if>
+			<if test="redAmount != null">
+				RED_AMOUNT = #{redAmount,jdbcType=DECIMAL},
+			</if>
+			<if test="supplementBy != null">
+				SUPPLEMENT_BY = #{supplementBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="orderCode != null">
+				ORDER_CODE = #{orderCode,jdbcType=VARCHAR},
+			</if>
+			<if test="redCode != null">
+				RED_CODE = #{redCode,jdbcType=VARCHAR},
+			</if>
+			<if test="channelCode != null">
+				CHANNEL_CODE = #{channelCode,jdbcType=VARCHAR},
+			</if>
+			<if test="inWallet != null">
+				IN_WALLET = #{inWallet,jdbcType=DECIMAL},
+			</if>
+			<if test="takenStatus != null">
+				TAKEN_STATUS = #{takenStatus,jdbcType=SMALLINT},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+</mapper>

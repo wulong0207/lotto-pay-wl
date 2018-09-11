@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.OrderGroupContentMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.OrderGroupContentBO">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="order_code" property="orderCode" jdbcType="VARCHAR" />
+		<result column="buy_code" property="buyCode" jdbcType="VARCHAR" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="buy_ratio" property="buyRatio" jdbcType="DECIMAL" />
+		<result column="buy_amount" property="buyAmount" jdbcType="DECIMAL" />
+		<result column="buy_time" property="buyTime" jdbcType="TIMESTAMP" />
+		<result column="pre_bonus" property="preBonus" jdbcType="DECIMAL" />
+		<result column="aft_bonus" property="aftBonus" jdbcType="DECIMAL" />
+		<result column="commission_amount" property="commissionAmount" jdbcType="DECIMAL" />
+		<result column="send_bonus" property="sendBonus" jdbcType="DECIMAL" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="refund_status" property="refundStatus" jdbcType="BIT" />
+		<result column="buy_type" property="buyType" jdbcType="BIT" />
+		<result column="buy_flag" property="buyFlag" jdbcType="BIT" />
+		<result column="added_bonus" property="addedBonus" jdbcType="DECIMAL" />
+		<result column="site_added_bonus" property="siteAddedBonus" jdbcType="DECIMAL" />
+		<result column="red_code_used" property="redCodeUsed" jdbcType="VARCHAR" />
+		<result column="red_code_get" property="redCodeGet" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="base_column">
+		ID, ORDER_CODE, USER_ID, BUY_RATIO, BUY_AMOUNT, BUY_TIME, PRE_BONUS, AFT_BONUS, COMMISSION_AMOUNT,
+		SEND_BONUS, CREATE_TIME, UPDATE_TIME, REMARK,BUY_CODE,REFUND_STATUS,BUY_TYPE,BUY_FLAG,ADDED_BONUS,SITE_ADDED_BONUS,RED_CODE_USED,RED_CODE_GET
+	</sql>
+
+	<!-- 根据订单号获取合买订单信息 -->
+	<select id="getUserOrderGroupContentByOrderCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM ORDER_GROUP_CONTENT WHERE ORDER_CODE = #{orderCode} and USER_ID = #{userId}
+	</select>
+
+	<!-- 根据订单号和用户ID获取用户最后一次认购记录 -->
+	<select id="getUserLastOrderGroupContentByOrderCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM ORDER_GROUP_CONTENT WHERE ORDER_CODE = #{orderCode} and USER_ID = #{userId} ORDER BY ID DESC LIMIT 1
+	</select>
+
+	<select id="getOrderGroupContentByBuyCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM ORDER_GROUP_CONTENT WHERE BUY_CODE = #{buyCode} ORDER BY ID DESC LIMIT 1
+	</select>
+
+	<!-- 根据订单号获取合买订单信息 -->
+	<select id="getOrderGroupContentByOrderCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM ORDER_GROUP_CONTENT WHERE ORDER_CODE = #{orderCode}
+	</select>
+
+	<select id="getOrderGroupContentByOrderCodeAndType" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM ORDER_GROUP_CONTENT WHERE ORDER_CODE = #{orderCode} AND BUY_TYPE= #{buyType}
+	</select>
+
+	<update id="updateOrderGroupContentStatus" parameterType="Map">
+		update ORDER_GROUP_CONTENT set REFUND_STATUS =
+		#{refundStatus} where BUY_CODE = #{buyCode}
+	</update>
+</mapper>

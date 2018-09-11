@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.OperateCouponMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.OperateCouponBO">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="RED_CODE" property="redCode" jdbcType="VARCHAR" />
+		<result column="RED_CATEGORY" property="redCategory" jdbcType="SMALLINT" />
+		<result column="ACTIVITY_CODE" property="activityCode" jdbcType="VARCHAR" />
+		<result column="OPERATE_LOTTERY_ID" property="operateLotteryId" jdbcType="VARCHAR" />
+		<result column="ACTIVE_END_TIME" property="activeEndTime" jdbcType="TIMESTAMP" />
+		<result column="OBTAIN_TIME" property="obtainTime" jdbcType="TIMESTAMP" />
+		<result column="RED_OVERDUE_TIME" property="redOverdueTime" jdbcType="TIMESTAMP" />
+		<result column="USE_TIME" property="useTime" jdbcType="TIMESTAMP" />
+		<result column="RED_TYPE" property="redType" jdbcType="SMALLINT" />
+		<result column="RED_NAME" property="redName" jdbcType="VARCHAR" />
+		<result column="RED_VALUE" property="redValue" jdbcType="DECIMAL" />
+		<result column="RED_BALANCE" property="redBalance" jdbcType="DECIMAL" />
+		<result column="MIN_SPEND_AMOUNT" property="minSpendAmount" jdbcType="DECIMAL" />
+		<result column="USER_ID" property="userId" jdbcType="INTEGER" />
+		<result column="ECTIVITY_DAY" property="ectivityDay" jdbcType="INTEGER" />
+		<result column="CHANNEL_ID" property="channelId" jdbcType="VARCHAR" />
+		<result column="RED_LABEL" property="redLabel" jdbcType="VARCHAR" />
+		<result column="RED_STATUS" property="redStatus" jdbcType="VARCHAR" />
+		<result column="LIMIT_PLATFORM" property="limitPlatform" jdbcType="VARCHAR" />
+		<result column="LIMIT_LOTTERY" property="limitLottery" jdbcType="VARCHAR" />
+		<result column="USE_RULE" property="useRule" jdbcType="VARCHAR" />
+		<result column="RED_REMARK" property="redRemark" jdbcType="VARCHAR" />
+		<result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="MODIFY_BY" property="modifyBy" jdbcType="VARCHAR" />
+		<result column="CREATE_BY" property="createBy" jdbcType="VARCHAR" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="RED_SOURCE" property="redSource" jdbcType="SMALLINT" />
+		<result column="LIMIT_LOTTERY_CHILD" property="limitLotteryChild" jdbcType="VARCHAR" />
+		<result column="LIMIT_LOTTERY_CHILD_TYPE" property="limitLotteryChildType" jdbcType="VARCHAR" />
+		<result column="RANDOM_RED_TYPE" property="randomRedType" jdbcType="SMALLINT" />
+	</resultMap>
+
+	<sql id="base_column">
+		ID,
+		<include refid="add_column" />
+	</sql>
+	<sql id="add_column">
+		RED_CODE,RED_CATEGORY,ACTIVITY_CODE,OPERATE_LOTTERY_ID,ACTIVE_END_TIME,OBTAIN_TIME,RED_OVERDUE_TIME,USE_TIME,RED_TYPE,RED_NAME,RED_VALUE,RED_BALANCE,MIN_SPEND_AMOUNT,
+		USER_ID,ECTIVITY_DAY,CHANNEL_ID,RED_LABEL,RED_STATUS,LIMIT_PLATFORM,LIMIT_LOTTERY,USE_RULE,RED_REMARK,MODIFY_TIME,MODIFY_BY,CREATE_BY,UPDATE_TIME,CREATE_TIME,REMARK,
+		RED_SOURCE,LIMIT_LOTTERY_CHILD,LIMIT_LOTTERY_CHILD_TYPE,RANDOM_RED_TYPE
+	</sql>
+
+	<sql id="add_value">
+		#{redCode,jdbcType=VARCHAR},#{redCategory,jdbcType=SMALLINT},#{activityCode,jdbcType=VARCHAR},#{operateLotteryId,jdbcType=VARCHAR},
+		#{activeEndTime,jdbcType=TIMESTAMP},#{obtainTime,jdbcType=TIMESTAMP},#{redOverdueTime,jdbcType=TIMESTAMP},#{useTime,jdbcType=TIMESTAMP},#{redType,jdbcType=SMALLINT},
+		#{redName,jdbcType=VARCHAR},#{redValue,jdbcType=DECIMAL},#{redBalance,jdbcType=DECIMAL},#{minSpendAmount,jdbcType=DECIMAL},#{userId,jdbcType=INTEGER},
+		#{ectivityDay,jdbcType=INTEGER},#{channelId,jdbcType=VARCHAR},#{redLabel,jdbcType=VARCHAR},#{redStatus,jdbcType=VARCHAR},#{limitPlatform,jdbcType=SMALLINT},
+		#{limitLottery,jdbcType=VARCHAR},#{useRule,jdbcType=VARCHAR},#{redRemark,jdbcType=VARCHAR},#{modifyTime,jdbcType=TIMESTAMP},#{modifyBy,jdbcType=VARCHAR},
+		#{createBy,jdbcType=VARCHAR},NOW(),NOW(),#{remark,jdbcType=VARCHAR},#{redSource,jdbcType=SMALLINT},#{limitLotteryChild,jdbcType=VARCHAR},
+		#{limitLotteryChildType,jdbcType=VARCHAR},#{randomRedType,jdbcType=SMALLINT}
+	</sql>
+
+	<sql id="common_where">
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="userId > 0">
+				AND USER_ID = #{userId}
+			</if>
+			<if test="redCode != null and redCode !='' ">
+				AND RED_CODE = #{redCode}
+			</if>
+			<if test="redType != null ">
+				AND RED_TYPE = #{redType}
+			</if>
+			<if test="redStatus != null ">
+				AND RED_STATUS = #{redStatus}
+			</if>
+			<if test="redCategory != null ">
+				AND RED_CATEGORY = #{redCategory}
+			</if>
+			<if test="activityCode !=null and activityCode !='' ">
+				AND ACTIVITY_CODE = #{activityCode}
+			</if>
+		</trim>
+	</sql>
+
+
+	<select id="getUserCouponeByRedCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM OPERATE_COUPON where USER_ID = #{userId} and RED_CODE = #{redCode}
+	</select>
+
+	<!-- 用户的彩金红包列表 -->
+	<select id="getUserCouponeList" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM OPERATE_COUPON where RED_STATUS = #{redStatus} and USER_ID = #{userId}
+	</select>
+
+	<select id="getCouponeByRedCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM OPERATE_COUPON where RED_CODE = #{redCode}
+	</select>
+
+	<select id="getUserCurPlatformCouponeList" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.pay.vo.OperateCouponVO">
+		SELECT
+		<include refid="base_column" />
+		FROM OPERATE_COUPON
+		<include refid="common_where" />
+		ORDER BY RED_OVERDUE_TIME ASC
+	</select>
+
+	<insert id="addOperateCoupon" parameterType="com.hhly.paycore.po.OperateCouponPO">
+		insert into OPERATE_COUPON(
+		<include refid="add_column" />
+		)values(
+		<include refid="add_value" />
+		)
+	</insert>
+
+	<!--修改彩金红包使用记录 -->
+	<update id="updateOperateCouponStatus" parameterType="com.hhly.paycore.po.OperateCouponPO">
+		UPDATE OPERATE_COUPON
+		<set>
+			USE_TIME = NOW(),
+			UPDATE_TIME = NOW(),
+			<if test="redBalance != null">
+				RED_BALANCE = #{redBalance, jdbcType=VARCHAR},
+			</if>
+			<if test="redStatus != null">
+				RED_STATUS = #{redStatus, jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE RED_CODE = #{redCode, jdbcType=VARCHAR}
+	</update>
+
+	<update id="updateStatus" parameterType="com.hhly.paycore.po.OperateCouponPO">
+		UPDATE OPERATE_COUPON
+		<set>
+			UPDATE_TIME = NOW(),
+			<if test="redStatus != null">
+				RED_STATUS = #{redStatus, jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE RED_CODE = #{redCode, jdbcType=VARCHAR}
+	</update>
+
+
+	<!-- 查看用户状态红包数量 -->
+	<select id="findOperateCouponCountStatusByUserId" resultType="com.hhly.skeleton.pay.bo.DicOperateCouponOptionBO"
+		parameterType="com.hhly.skeleton.pay.vo.OperateCouponVO">
+		select count(1) as total,red_status as type from
+		operate_coupon
+		where user_id = #{userId}
+		<if test="limitPlatform != null ">
+			and concat(',',limit_platform,',') like concat('%,',#{limitPlatform,jdbcType=VARCHAR},',%')
+		</if>
+		group by red_status
+	</select>
+
+	<!-- 查看用户类别红包数量 -->
+	<select id="findOperateCouponCountRedTypeByUserId" resultType="com.hhly.skeleton.pay.bo.DicOperateCouponOptionBO"
+		parameterType="com.hhly.skeleton.pay.vo.OperateCouponVO">
+		select count(1) as total,red_type as type from
+		operate_coupon
+		where user_id = #{userId}
+		<if test="limitPlatform != null ">
+			and concat(',',limit_platform,',') like concat('%,',#{limitPlatform,jdbcType=VARCHAR},',%')
+		</if>
+		group by red_type
+	</select>
+
+	<sql id="UserCouponeByUserId_Sql">
+		where user_id = #{userId}
+		<if test="redType != null ">
+			and red_type = #{redType}
+		</if>
+		<if test="redStatus != null ">
+			and red_status = #{redStatus}
+		</if>
+		<if test="limitPlatform != null ">
+			and concat(',',limit_platform,',') like concat('%,',#{limitPlatform,jdbcType=VARCHAR},',%')
+		</if>
+		<if test="redClass == 1">
+			order by red_balance desc
+		</if>
+		<if test="redClass == 2">
+			order by obtain_time desc
+		</if>
+		<if test="redClass == null">
+			order by red_balance desc
+		</if>
+	</sql>
+
+	<!-- 查询红包将要过期数量 -->
+	<select id="selectRedOverdueTimeCount" resultType="int" parameterType="com.hhly.skeleton.pay.vo.OperateCouponVO">
+		SELECT count(1) AS total
+		FROM operate_coupon a
+		WHERE user_id = #{userId}
+		AND date_format(a.red_overdue_time, '%Y-%m-%d') <![CDATA[ <= ]]>
+		date_format(adddate(now(), 4), '%Y-%m-%d')
+	</select>
+
+	<!-- 查询用户红包余额 必须为彩金红包而且是可使用状态 -->
+	<select id="getUserRedBalance" resultType="java.lang.Double" parameterType="com.hhly.skeleton.pay.vo.OperateCouponVO">
+		select sum(red_balance) as balance
+		from operate_coupon a
+		where user_id = #{userId}
+		and red_type = 3
+		and red_status = 3
+	</select>
+
+	<!-- 查询用户红包数量 -->
+	<select id="getUserCouponeCountByUserId" resultType="int" parameterType="com.hhly.skeleton.pay.vo.OperateCouponVO">
+		select
+		count(1) as total
+		from operate_coupon a
+		<include refid="UserCouponeByUserId_Sql" />
+	</select>
+
+	<!-- 查询用户红包列表 -->
+	<select id="getUserCouponeByUserId" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.pay.vo.OperateCouponVO">
+		select * from (
+		<if test="redClass == 3">
+			select
+			<include refid="base_column" />
+			, 1 as over_time_status
+			from operate_coupon a
+			<include refid="UserCouponeByUserId_Sql" />
+			and date_format(A.red_overdue_time,'%Y-%m-%d') <![CDATA[ <= ]]>
+			date_format(adddate(now(),4),'%Y-%m-%d')
+			order by red_overdue_time asc
+			union all
+		</if>
+		select
+		<include refid="base_column" />
+		, 0 as over_time_status
+		from operate_coupon a
+		<include refid="UserCouponeByUserId_Sql" />
+		) b
+		limit #{startRow},#{endRow}
+	</select>
+</mapper>

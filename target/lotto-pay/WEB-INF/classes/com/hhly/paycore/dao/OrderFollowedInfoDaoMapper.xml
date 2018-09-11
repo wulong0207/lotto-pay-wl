@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hhly.paycore.dao.OrderFollowedInfoDaoMapper">
+    <resultMap id="BaseResultMap" type="com.hhly.skeleton.lotto.base.ordercopy.bo.OrderFollowedInfoBO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="nick_name" jdbcType="VARCHAR" property="nickName"/>
+        <result column="order_issue_id" jdbcType="INTEGER" property="orderIssueId"/>
+        <result column="order_code" jdbcType="VARCHAR" property="orderCode"/>
+        <result column="commission_amount" jdbcType="DECIMAL" property="commissionAmount"/>
+        <result column="data_status" jdbcType="BIT" property="dataStatus"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="modify_by" jdbcType="VARCHAR" property="modifyBy"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, user_id, nick_name, order_issue_id, order_code, commission_amount, data_status,
+        create_time, modify_time, modify_by, update_time
+    </sql>
+
+    <update id="update">
+        UPDATE order_followed_info
+        SET 
+            commission_amount = #{commissionAmount,jdbcType=DECIMAL}
+          
+        WHERE order_code      = #{orderCode,jdbcType=VARCHAR}
+    </update>
+    
+    <select id="getFollowOrderCode" resultType="String">
+    	select 
+    	order_code
+    	from order_followed_info where order_issue_id = #{orderIssueId}
+    </select>
+</mapper>

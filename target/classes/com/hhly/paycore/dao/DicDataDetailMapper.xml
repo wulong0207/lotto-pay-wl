@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.DicDataDetailMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.lotto.base.dic.bo.DicDataDetailBO">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="DIC_CODE" property="dicCode" jdbcType="VARCHAR" />
+		<result column="DIC_DATA_NAME" property="dicDataName" jdbcType="VARCHAR" />
+		<result column="DIC_DATA_VALUE" property="dicDataValue" jdbcType="VARCHAR" />
+		<result column="IS_FIXED" property="isFixed" jdbcType="DECIMAL" />
+		<result column="STATUS" property="status" jdbcType="DECIMAL" />
+		<result column="ORDER_BY" property="orderBy" jdbcType="DECIMAL" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<select id="findDataList" resultMap="BaseResultMap">
+		SELECT
+		ID,DIC_CODE,DIC_DATA_NAME,DIC_DATA_VALUE,IS_FIXED,STATUS,ORDER_BY FROM
+		DIC_DATA_DETAIL WHERE DIC_CODE = #{dicCode} AND
+		STATUS = 1
+	</select>
+</mapper>
