@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.PayOrderUpdateMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.lotto.base.order.bo.OrderInfoBO">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="ORDER_CODE" property="orderCode" jdbcType="BIGINT" />
+		<result column="ORDER_ADD_CODE" property="orderAddCode" jdbcType="VARCHAR" />
+		<result column="LOTTERY_CODE" property="lotteryCode" jdbcType="DECIMAL" />
+		<result column="LOTTERY_NAME" property="lotteryName" jdbcType="VARCHAR" />
+		<result column="LOTTERY_ISSUE" property="lotteryIssue" jdbcType="VARCHAR" />
+		<result column="BUY_TIME" property="buyTime" jdbcType="TIMESTAMP" />
+		<result column="END_TICKET_TIME" property="endTicketTime" jdbcType="TIMESTAMP" />
+		<result column="END_CHECK_TIME" property="endCheckTime" jdbcType="TIMESTAMP" />
+		<result column="COME_OUT_TIME" property="comeOutTime" jdbcType="TIMESTAMP" />
+		<result column="LOTTERY_TIME" property="lotteryTime" jdbcType="TIMESTAMP" />
+		<result column="SEND_TIME" property="sendTime" jdbcType="TIMESTAMP" />
+		<result column="USER_ID" property="userId" jdbcType="BIGINT" />
+		<result column="ORDER_AMOUNT" property="orderAmount" jdbcType="DECIMAL" />
+		<result column="MULTIPLE_NUM" property="multipleNum" jdbcType="DECIMAL" />
+		<result column="SPLIT_NUM" property="splitNum" jdbcType="DECIMAL" />
+		<result column="WINNING_DETAIL" property="winningDetail" jdbcType="VARCHAR" />
+		<result column="PRE_BONUS" property="preBonus" jdbcType="DECIMAL" />
+		<result column="AFT_BONUS" property="aftBonus" jdbcType="DECIMAL" />
+		<result column="BUY_TYPE" property="buyType" jdbcType="DECIMAL" />
+		<result column="PAY_STATUS" property="payStatus" jdbcType="DECIMAL" />
+		<result column="ORDER_STATUS" property="orderStatus" jdbcType="DECIMAL" />
+		<result column="WINNING_STATUS" property="winningStatus" jdbcType="DECIMAL" />
+		<result column="CHANNEL_ID" property="channelId" jdbcType="VARCHAR" />
+		<result column="ADDED_BONUS" property="addedBonus" jdbcType="DECIMAL" />
+		<result column="WEBSITE_BONUS" property="websiteBonus" jdbcType="DECIMAL" />
+		<result column="RED_CODE_USED" property="redCodeUsed" jdbcType="VARCHAR" />
+		<result column="RED_CODE_GET" property="redCodeGet" jdbcType="VARCHAR" />
+		<result column="ACTIVITY_SOURCE" property="activitySource" jdbcType="VARCHAR" />
+		<result column="DRAW_CODE" property="drawCode" jdbcType="VARCHAR" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="END_SYS_TIME" jdbcType="TIMESTAMP" property="endSysTime" />
+		<result column="PLATFORM" property="platform" jdbcType="SMALLINT" />
+		<result column="ORDER_TYPE" property="orderType" jdbcType="INTEGER" />
+		
+	</resultMap>
+
+	<sql id="base_column">
+		ID, ORDER_CODE,ORDER_ADD_CODE, LOTTERY_CODE, LOTTERY_NAME, LOTTERY_ISSUE, BUY_TIME, END_TICKET_TIME, END_CHECK_TIME,
+		COME_OUT_TIME, LOTTERY_TIME, SEND_TIME, USER_ID, ORDER_AMOUNT, MULTIPLE_NUM, SPLIT_NUM, WINNING_DETAIL, PRE_BONUS,
+		AFT_BONUS, BUY_TYPE, PAY_STATUS, ORDER_STATUS, WINNING_STATUS, CHANNEL_ID, ADDED_BONUS, RED_CODE_USED,RED_CODE_GET,
+		ACTIVITY_SOURCE,DRAW_CODE,REMARK,END_SYS_TIME,PLATFORM,ORDER_TYPE,WEBSITE_BONUS
+	</sql>
+
+	<!-- 更新订单支付信息 -->
+	<update id="updateOrderPayStatus" parameterType="com.hhly.paycore.po.PayOrderUpdatePO">
+		update ORDER_INFO
+		<set>
+			UPDATE_TIME = NOW(),
+			<if test="payStatus != null">
+				PAY_STATUS = #{payStatus,jdbcType=SMALLINT},
+			</if>
+			<if test="orderStatus != null">
+				ORDER_STATUS = #{orderStatus,jdbcType=SMALLINT},
+			</if>
+			<if test="redCodeUsed != null">
+				RED_CODE_USED = #{redCodeUsed,jdbcType=VARCHAR},
+			</if>
+			<if test="redCodeGet != null">
+				RED_CODE_GET = #{redCodeGet,jdbcType=VARCHAR},
+			</if>
+			<if test="activitySource != null">
+				ACTIVITY_SOURCE = #{activitySource,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ORDER_CODE = #{orderCode,jdbcType=VARCHAR}
+	</update>
+
+	<!-- 更新订单的中奖状态 -->
+	<update id="updateOrderWinningStatus" parameterType="com.hhly.skeleton.lotto.base.order.bo.OrderInfoBO">
+		update ORDER_INFO
+		<set>
+			UPDATE_TIME = NOW(),
+			<if test="winningStatus != null">
+				WINNING_STATUS = #{winningStatus,jdbcType=SMALLINT},
+			</if>
+		</set>
+		where ORDER_CODE = #{orderCode,jdbcType=VARCHAR}
+	</update>
+
+	<!-- 批量更新 -->
+	<update id="updateOrderBatch" parameterType="java.util.List">
+		<!-- <foreach collection="list" item="item" index="index" open="begin" close=";end;" separator=";"> -->
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			update ORDER_INFO
+			<set>
+				UPDATE_TIME = NOW(),
+				<if test="item.payStatus != null">
+					PAY_STATUS = #{item.payStatus,jdbcType=SMALLINT},
+				</if>
+				<if test="item.redCodeUsed != null">
+					RED_CODE_USED = #{item.redCodeUsed,jdbcType=VARCHAR},
+				</if>
+				<if test="item.buyTime != null">
+					BUY_TIME = #{item.buyTime,jdbcType=TIMESTAMP},
+				</if>
+			</set>
+			where ORDER_CODE = #{item.orderCode,jdbcType=VARCHAR}
+		</foreach>
+	</update>
+
+
+	<!-- 获取订单详情 -->
+	<select id="getOrderInfo" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+		<include refid="base_column" />
+		FROM ORDER_INFO WHERE ORDER_CODE = #{orderCode}
+	</select>
+
+	<!-- 获取订单列表 -->
+	<select id="getOrderList" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM ORDER_INFO WHERE ORDER_CODE in (
+		<foreach collection="orderCodes" item="item" separator=",">
+			#{item}
+		</foreach>
+		)
+	</select>
+
+</mapper>

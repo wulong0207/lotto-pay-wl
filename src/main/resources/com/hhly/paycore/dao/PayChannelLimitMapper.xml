@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.PayChannelLimitMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.channel.bo.PayChannelLimitBO">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="pay_channel_mgr_id" property="payChannelMgrId" jdbcType="INTEGER" />
+		<result column="limittime" property="limittime" jdbcType="DECIMAL" />
+		<result column="limitday" property="limitday" jdbcType="DECIMAL" />
+		<result column="limitmonth" property="limitmonth" jdbcType="DECIMAL" />
+		<result column="pay_type" property="payType" jdbcType="BIT" />
+		<result column="card_type" property="cardType" jdbcType="BIT" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, pay_channel_mgr_id, limittime, limitday, limitmonth, pay_type, card_type, remark
+	</sql>
+
+	<select id="getAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from pay_channel_limit
+	</select>
+
+	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from pay_channel_limit
+		WHERE PAY_CHANNEL_MGR_ID = #{payChannelMgrId,jdbcType=INTEGER}
+	</select>
+</mapper>

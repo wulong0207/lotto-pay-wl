@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.AgentInfoMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.agent.bo.AgentInfoBO">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="agent_code" property="agentCode" jdbcType="VARCHAR" />
+		<result column="parent_agent_id" property="parentAgentId" jdbcType="INTEGER" />
+		<result column="agent_level" property="agentLevel" jdbcType="SMALLINT" />
+		<result column="agent_status" property="agentStatus" jdbcType="BIT" />
+		<result column="agent_time" property="agentTime" jdbcType="TIMESTAMP" />
+		<result column="agent_wallet" property="agentWallet" jdbcType="DECIMAL" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, user_id, agent_code, parent_agent_id, agent_level, agent_status, agent_time,
+		agent_wallet, update_time,
+		remark
+	</sql>
+
+	<select id="selectAgentInfo" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from agent_info
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectAgentInfoByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from agent_info
+		where user_id = #{userId,jdbcType=INTEGER}
+	</select>
+
+	<update id="updateAgent" parameterType="com.hhly.paycore.po.AgentInfoPO">
+		update agent_info
+		<set>
+			update_time = NOW(),
+			<if test="record.agentWallet != null">
+				agent_wallet = #{record.agentWallet,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateAgentWalletIncome">
+		update agent_info
+		<set>
+			update_time = NOW(),
+			<if test="subAmount != null">
+				agent_wallet = agent_wallet+#{subAmount,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateAgentWalletOut">
+		update agent_info
+		<set>
+			update_time = NOW(),
+			<if test="subAmount != null">
+				agent_wallet = agent_wallet-#{subAmount,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

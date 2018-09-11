@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.AgentTransLogMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.agent.bo.AgentTransLogBO">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="agent_id" property="agentId" jdbcType="INTEGER" />
+		<result column="trans_code" property="transCode" jdbcType="VARCHAR" />
+		<result column="trans_type" property="transType" jdbcType="BIT" />
+		<result column="trans_info" property="transInfo" jdbcType="VARCHAR" />
+		<result column="trans_end_time" property="transEndTime" jdbcType="TIMESTAMP" />
+		<result column="trans_amount" property="transAmount" jdbcType="DECIMAL" />
+		<result column="trans_status" property="transStatus" jdbcType="BIT" />
+		<result column="service_charge" property="serviceCharge" jdbcType="DECIMAL" />
+		<result column="real_amount" property="realAmount" jdbcType="DECIMAL" />
+		<result column="tax_charge" property="taxCharge" jdbcType="DECIMAL" />
+		<result column="total_cash_balance" property="totalCashBalance" jdbcType="DECIMAL" />
+		<result column="trade_code" property="tradeCode" jdbcType="VARCHAR" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,
+		<include refid="add_column" />
+	</sql>
+
+	<sql id="add_column">
+		AGENT_ID, TRANS_CODE, TRANS_TYPE, TRANS_INFO, TRANS_END_TIME, TRANS_AMOUNT, TRANS_STATUS,
+		SERVICE_CHARGE,REAL_AMOUNT, TAX_CHARGE, TOTAL_CASH_BALANCE, TRADE_CODE, CREATE_BY, CREATE_TIME,
+		UPDATE_BY, UPDATE_TIME,
+		REMARK
+	</sql>
+
+	<sql id="common_where">
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="agentId > 0">
+				AND agent_id = #{agentId}
+			</if>
+			<if test="queryType == 1">
+				AND trans_type <![CDATA[<>]]>
+				5
+			</if>
+			<if test="startDate != null">
+				AND CREATE_TIME BETWEEN #{startDate} AND #{endDate}
+			</if>
+		</trim>
+	</sql>
+
+	<select id="selectById" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from agent_trans_log where agent_id = #{agentId}
+	</select>
+
+	<!-- 分页获取用户交易记录 -->
+	<select id="getAgentTransListByPage" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.pay.agent.vo.AgentTransLogParamVO">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM agent_trans_log
+		<include refid="common_where" />
+		ORDER BY ID DESC limit #{currentResult},#{showCount}
+	</select>
+
+	<select id="findTransDetail" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from agent_trans_log where agent_id = #{agentId} and trans_code = #{transCode} limit 1
+	</select>
+
+	<!-- 获取指定代理最后一条返佣流水 -->
+	<select id="findAgentLastTransDetail" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from agent_trans_log where trans_type = 5 and agent_id = #{agentId} order by id desc limit 1
+	</select>
+
+	<select id="findAgentTransLogByTakenCode" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from agent_trans_log where trade_code = #{tradeCode} limit 1
+	</select>
+
+
+	<!-- 获取符合条件的记录 -->
+	<select id="getAgentTransListCount" resultType="int" parameterType="com.hhly.skeleton.pay.agent.vo.AgentTransLogParamVO">
+		SELECT count(1) FROM agent_trans_log
+		<include refid="common_where" />
+	</select>
+
+
+	<insert id="insert" parameterType="com.hhly.paycore.po.AgentTransLogPO">
+		insert into agent_trans_log (
+		<include refid="add_column" />
+		)
+		values (#{agentId,jdbcType=INTEGER},
+		#{transCode,jdbcType=VARCHAR},
+		#{transType,jdbcType=BIT},
+		#{transInfo,jdbcType=VARCHAR}, NOW(),
+		#{transAmount,jdbcType=DECIMAL},
+		#{transStatus,jdbcType=BIT},
+		#{serviceCharge,jdbcType=DECIMAL},#{realAmount,jdbcType=DECIMAL},
+		#{taxCharge,jdbcType=DECIMAL},
+		#{totalCashBalance,jdbcType=DECIMAL}, #{tradeCode,jdbcType=VARCHAR},
+		#{createBy,jdbcType=VARCHAR}, NOW(),
+		#{updateBy,jdbcType=VARCHAR},
+		NOW(), #{remark,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- 批量添加 -->
+	<insert id="insertBatch" parameterType="java.util.List">
+		insert into agent_trans_log (
+		<include refid="add_column" />
+		)
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.agentId,jdbcType=INTEGER},
+			#{item.transCode,jdbcType=VARCHAR},
+			#{item.transType,jdbcType=BIT},
+			#{item.transInfo,jdbcType=VARCHAR}, NOW(),
+			#{item.transAmount,jdbcType=DECIMAL},
+			#{item.transStatus,jdbcType=BIT},
+			#{item.serviceCharge,jdbcType=DECIMAL},#{item.realAmount,jdbcType=DECIMAL},
+			#{item.taxCharge,jdbcType=DECIMAL},
+			#{item.totalCashBalance,jdbcType=DECIMAL}, #{item.tradeCode,jdbcType=VARCHAR},
+			#{item.createBy,jdbcType=VARCHAR},
+			NOW(),
+			#{item.updateBy,jdbcType=VARCHAR},
+			NOW(), #{item.remark,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+
+	<!-- 批量更新交易流水的状态，主要是修改提款交易记录的状态 -->
+	<update id="updateAgentTransByBatch" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			update agent_trans_log t
+			<set>
+				t.UPDATE_TIME = NOW(),
+				t.TRANS_STATUS = #{item.transStatus,jdbcType=INTEGER},
+			</set>
+			where t.TRADE_CODE = #{item.tradeCode,jdbcType=VARCHAR} and t.TRANS_TYPE = #{item.transType,jdbcType=SMALLINT}
+		</foreach>
+	</update>
+
+	<update id="updateAgentTrans" parameterType="com.hhly.paycore.po.AgentTransLogPO">
+		update agent_trans_log set UPDATE_TIME = NOW(), TRANS_STATUS =
+		#{transStatus,jdbcType=INTEGER}
+		where TRADE_CODE = #{tradeCode,jdbcType=VARCHAR} and TRANS_TYPE =
+		#{transType,jdbcType=SMALLINT}
+	</update>
+</mapper>

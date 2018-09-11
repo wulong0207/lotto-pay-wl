@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.TransTakenMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.TransTakenBO">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="TRANS_TAKEN_CODE" jdbcType="VARCHAR" property="transTakenCode" />
+		<result column="PAY_CHANNEL" jdbcType="SMALLINT" property="payChannel" />
+		<result column="TAKEN_BANK" jdbcType="INTEGER" property="takenBank" />
+		<result column="BANK_CARD_NUM" jdbcType="VARCHAR" property="bankCardNum" />
+		<result column="REVIEW_TIME" jdbcType="TIMESTAMP" property="reviewTime" />
+		<result column="REMIT_TIME" jdbcType="TIMESTAMP" property="remitTime" />
+		<result column="ARRIVAL_TIME" jdbcType="TIMESTAMP" property="arrivalTime" />
+		<result column="DEAL_TIME" jdbcType="TIMESTAMP" property="dealTime" />
+		<result column="SEND_DOWN_TIME" jdbcType="TIMESTAMP" property="sendDownTime" />
+		<result column="BANK_INFO" jdbcType="VARCHAR" property="bankInfo" />
+		<result column="USER_ID" jdbcType="DECIMAL" property="userId" />
+		<result column="EXTRACT_AMOUNT" jdbcType="DECIMAL" property="extractAmount" />
+		<result column="SERVICE_CHARGE" jdbcType="DECIMAL" property="serviceCharge" />
+		<result column="REVIEW_BY" jdbcType="VARCHAR" property="reviewBy" />
+		<result column="TRANS_CERT" jdbcType="VARCHAR" property="transCert" />
+		<result column="TRANS_FAIL_INFO" jdbcType="VARCHAR" property="transFailInfo" />
+		<result column="TRANS_STATUS" jdbcType="SMALLINT" property="transStatus" />
+		<result column="TAKEN_PLATFORM" jdbcType="SMALLINT" property="takenPlatform" />
+		<result column="CHANNEL_ID" jdbcType="VARCHAR" property="channelId" />
+		<result column="THIRD_TRANS_NUM" jdbcType="VARCHAR" property="thirdTransNum" />
+		<result column="BATCH_NUM" jdbcType="VARCHAR" property="batchNum" />
+		<result column="BATCH_STATUS" jdbcType="SMALLINT" property="batchStatus" />
+		<result column="BANK_RETURN_INFO" jdbcType="VARCHAR" property="bankReturnInfo" />
+		<result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+		<result column="MODIFY_BY" jdbcType="VARCHAR" property="modifyBy" />
+		<result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+		<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="REAL_AMOUNT" jdbcType="DECIMAL" property="realAmount" />
+		<result column="TAKEN_TIMES" jdbcType="SMALLINT" property="takenTimes" />
+		<result column="TAKEN_TYPE" jdbcType="SMALLINT" property="takenType" />
+		<result column="TRANS_RECHARGE_CODE" jdbcType="VARCHAR" property="transRechargeCode" />
+	</resultMap>
+
+	<sql id="base_column">
+		ID,TRANS_TAKEN_CODE,PAY_CHANNEL,TAKEN_BANK,BANK_CARD_NUM,REVIEW_TIME,REMIT_TIME,ARRIVAL_TIME,DEAL_TIME,SEND_DOWN_TIME,BANK_INFO,USER_ID,EXTRACT_AMOUNT,SERVICE_CHARGE,REVIEW_BY,
+		TRANS_CERT,TRANS_FAIL_INFO,TRANS_STATUS,TAKEN_PLATFORM,CHANNEL_ID,THIRD_TRANS_NUM,BATCH_NUM,BATCH_STATUS,BANK_RETURN_INFO,MODIFY_TIME,MODIFY_BY,CREATE_BY,UPDATE_TIME,CREATE_TIME,
+		REMARK,REAL_AMOUNT,TAKEN_TIMES,TAKEN_TYPE,TRANS_RECHARGE_CODE
+	</sql>
+
+	<sql id="add_column">
+		TRANS_TAKEN_CODE,PAY_CHANNEL,TAKEN_BANK,BANK_CARD_NUM,BANK_INFO,USER_ID,EXTRACT_AMOUNT,
+		SERVICE_CHARGE,REVIEW_BY,TRANS_CERT,TRANS_FAIL_INFO,TRANS_STATUS,TAKEN_PLATFORM,CHANNEL_ID,THIRD_TRANS_NUM,BATCH_NUM,BATCH_STATUS,BANK_RETURN_INFO,
+		MODIFY_TIME,MODIFY_BY,CREATE_BY,UPDATE_TIME,CREATE_TIME,REMARK,REAL_AMOUNT,TAKEN_TIMES,TAKEN_TYPE,TRANS_RECHARGE_CODE
+	</sql>
+
+	<sql id="add_value">
+		#{transTakenCode,jdbcType=VARCHAR},#{payChannel,jdbcType=INTEGER},#{takenBank,jdbcType=INTEGER},#{bankCardNum,jdbcType=VARCHAR},#{bankInfo,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER},
+		#{extractAmount,jdbcType=DECIMAL},#{serviceCharge,jdbcType=DECIMAL},#{reviewBy,jdbcType=VARCHAR},#{transCert,jdbcType=VARCHAR},#{transFailInfo,jdbcType=VARCHAR},#{transStatus,jdbcType=INTEGER},
+		#{takenPlatform,jdbcType=INTEGER},#{channelId,jdbcType=VARCHAR},#{thirdTransNum,jdbcType=VARCHAR},#{batchNum,jdbcType=VARCHAR},#{batchStatus,jdbcType=INTEGER},#{bankReturnInfo,jdbcType=VARCHAR},
+		#{modifyTime,jdbcType=TIMESTAMP},#{modifyBy,jdbcType=VARCHAR},#{createBy,jdbcType=VARCHAR},NOW(),NOW(),#{remark,jdbcType=VARCHAR},#{realAmount,jdbcType=DECIMAL},#{takenTimes,jdbcType=SMALLINT},
+		#{takenType,jdbcType=SMALLINT},#{transRechargeCode,jdbcType=VARCHAR}
+	</sql>
+
+	<sql id="common_where">
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="userId > 0">
+				AND USER_ID = #{userId}
+			</if>
+			<if test="transStatus!=null">
+				AND TRANS_STATUS = #{transStatus}
+			</if>
+			<if test="timeType == 1">
+				<if test="startDate!=null">
+					AND CREATE_TIME BETWEEN #{startDate} AND #{endDate}
+				</if>
+			</if>
+			<if test="timeType == 2">
+				<if test="startDate!=null">
+					AND TRANS_TIME BETWEEN #{startDate} AND #{endDate}
+				</if>
+			</if>
+			<if test="transCode !=null and transCode !='' ">
+				AND TRANS_TAKEN_CODE = #{transCode}
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 通过用户ID和交易流水号查找交易记录，传入参数必须按顺序 -->
+	<select id="findUserTakenByCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_TAKEN where USER_ID = #{userId} and TRANS_TAKEN_CODE = #{transCode}
+	</select>
+
+	<!-- 获取用户一天的提款次数 -->
+	<select id="getUserTakenTimes" resultType="java.lang.Integer">
+		SELECT COALESCE(MAX(TAKEN_TIMES),0) FROM TRANS_TAKEN WHERE
+		LEFT(CREATE_TIME,10) =
+		#{today} AND USER_ID = #{userId}
+	</select>
+
+	<select id="findTakenListByPage" resultMap="BaseResultMap" parameterType="com.hhly.skeleton.pay.vo.TransParamVO">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_TAKEN
+		<include refid="common_where" />
+		ORDER BY ID DESC limit #{currentResult},#{showCount}
+	</select>
+
+	<select id="findTakenListCount" resultType="int" parameterType="com.hhly.skeleton.pay.vo.TransParamVO">
+		SELECT count(1) FROM TRANS_TAKEN
+		<include refid="common_where" />
+	</select>
+
+	<!-- 根据提款编号批量获取提款记录 -->
+	<select id="getTakenBatch" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_TAKEN where TRANS_TAKEN_CODE in
+		<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</select>
+
+	<!-- 获取正在处理中的提款列表 -->
+	<select id="getProcessTakenList" resultMap="BaseResultMap" parameterType="java.util.Map">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_TAKEN WHERE USER_ID = #{userId} AND TRANS_STATUS in
+		<foreach collection="transStatus" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		ORDER BY ID DESC
+	</select>
+
+	<!-- 自动审核查询语句 -->
+	<select id="findWaitVerifyTakenList" resultMap="BaseResultMap" parameterType="java.util.Map">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_TAKEN WHERE TRANS_STATUS = #{transStatus} and EXTRACT_AMOUNT <![CDATA[ <= #{extractAmount}]]>
+		AND CREATE_TIME BETWEEN #{startTime} and #{endTime}
+		ORDER BY ID DESC LIMIT #{limit}
+	</select>
+
+	<!-- 添加用户提款记录 -->
+	<insert id="addTakenTrans" parameterType="com.hhly.paycore.po.TransTakenPO">
+		INSERT INTO TRANS_TAKEN (
+		<include refid="add_column" />
+		)
+		values (
+		<include refid="add_value" />
+		)
+	</insert>
+
+	<!-- 更新提款相关信息 -->
+	<update id="updateTakenTrans" parameterType="com.hhly.paycore.po.TransTakenPO">
+		update TRANS_TAKEN
+		<set>
+			UPDATE_TIME = NOW(),
+			MODIFY_TIME = NOW(),
+			<if test="reviewTime != null">
+				REVIEW_TIME = #{reviewTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="remitTime != null">
+				REMIT_TIME = #{remitTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="arrivalTime != null">
+				ARRIVAL_TIME = #{arrivalTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dealTime != null">
+				DEAL_TIME = #{dealTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="sendDownTime != null">
+				SEND_DOWN_TIME = #{sendDownTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="serviceCharge != null">
+				SERVICE_CHARGE = #{serviceCharge,jdbcType=DECIMAL},
+			</if>
+			<if test="transCert != null">
+				TRANS_CERT = #{transCert,jdbcType=VARCHAR},
+			</if>
+			<if test="transFailInfo != null">
+				TRANS_FAIL_INFO = #{transFailInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="transStatus != null">
+				TRANS_STATUS = #{transStatus,jdbcType=SMALLINT},
+			</if>
+			<if test="thirdTransNum != null">
+				THIRD_TRANS_NUM = #{thirdTransNum,jdbcType=VARCHAR},
+			</if>
+			<if test="batchNum != null">
+				BATCH_NUM = #{batchNum,jdbcType=VARCHAR},
+			</if>
+			<if test="batchStatus != null">
+				BATCH_STATUS = #{batchStatus,jdbcType=SMALLINT},
+			</if>
+			<if test="bankReturnInfo != null">
+				BANK_RETURN_INFO = #{bankReturnInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="reviewBy != null">
+				REVIEW_BY = #{reviewBy,jdbcType=VARCHAR},
+			</if>
+			<if test="modifyBy != null">
+				MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="transRechargeCode != null">
+				TRANS_RECHARGE_CODE = #{transRechargeCode,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+
+	<!-- 批量更新交易流水的状态，主要是修改提款交易记录的状态 -->
+	<update id="updateTakenByBatch" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			UPDATE TRANS_TAKEN
+			<set>
+				UPDATE_TIME = NOW(),
+				MODIFY_TIME = NOW(),
+				<if test="item.reviewTime != null">
+					REVIEW_TIME = #{item.reviewTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="item.remitTime != null">
+					REMIT_TIME = #{item.remitTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="item.arrivalTime != null">
+					ARRIVAL_TIME = #{item.arrivalTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="item.dealTime != null">
+					DEAL_TIME = #{item.dealTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="item.sendDownTime != null">
+					SEND_DOWN_TIME = #{item.sendDownTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="item.serviceCharge != null">
+					SERVICE_CHARGE = #{item.serviceCharge,jdbcType=DECIMAL},
+				</if>
+				<if test="item.transCert != null">
+					TRANS_CERT = #{item.transCert,jdbcType=VARCHAR},
+				</if>
+				<if test="item.transFailInfo != null">
+					TRANS_FAIL_INFO = #{item.transFailInfo,jdbcType=VARCHAR},
+				</if>
+				<if test="item.transStatus != null">
+					TRANS_STATUS = #{item.transStatus,jdbcType=SMALLINT},
+				</if>
+				<if test="item.thirdTransNum != null">
+					THIRD_TRANS_NUM = #{item.thirdTransNum,jdbcType=VARCHAR},
+				</if>
+				<if test="item.batchNum != null">
+					BATCH_NUM = #{item.batchNum,jdbcType=VARCHAR},
+				</if>
+				<if test="item.batchStatus != null">
+					BATCH_STATUS = #{item.batchStatus,jdbcType=SMALLINT},
+				</if>
+				<if test="item.bankReturnInfo != null">
+					BANK_RETURN_INFO = #{item.bankReturnInfo,jdbcType=VARCHAR},
+				</if>
+				<if test="item.reviewBy != null">
+					REVIEW_BY = #{item.reviewBy,jdbcType=VARCHAR},
+				</if>
+				<if test="item.modifyBy != null">
+					MODIFY_BY = #{item.modifyBy,jdbcType=VARCHAR},
+				</if>
+				<if test="item.remark != null">
+					REMARK = #{item.remark,jdbcType=VARCHAR},
+				</if>
+				<if test="item.transRechargeCode != null">
+					TRANS_RECHARGE_CODE = #{item.transRechargeCode,jdbcType=VARCHAR},
+				</if>
+			</set>
+			where TRANS_TAKEN_CODE = #{item.transTakenCode,jdbcType=VARCHAR}
+		</foreach>
+	</update>
+</mapper>

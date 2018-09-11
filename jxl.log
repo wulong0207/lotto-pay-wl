@@ -1,0 +1,1168 @@
+2018-07-04 18:58:55,431 [INFO ] com.alibaba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2018-07-04 18:59:03,727 [INFO ] com.hhly.paycore.jms.StartupListener  - >>>>>>>>>>>>系统启动完成，onApplicationEvent()
+2018-07-04 18:59:03,730 [INFO ] com.hhly.paycore.jms.DelayService  - 延时处理DelayService 启动
+2018-07-04 18:59:03,895 [INFO ] com.hhly.paycore.jms.StartupListener  - 需要入队的订单keys：[p_core_recharge_order_I18070415595614700010, p_core_recharge_order_I18070416004014700013, p_core_recharge_order_I18070416012814700019, p_core_recharge_order_I18070416005414700015, p_core_recharge_order_I18070415592714700008, p_core_recharge_order_I18070415554212300014, p_core_recharge_order_I18070415592714700009, p_core_recharge_order_I18070415254912300001, p_core_recharge_order_I18070415562612300016, p_core_recharge_order_I18070415320212300002, p_core_recharge_order_I18070416012014700018, p_core_recharge_order_I18070415584314700004, p_core_recharge_order_I18070415562512300015, p_core_recharge_order_I18070415585214700005, p_core_recharge_order_I18070415592114700007, p_core_recharge_order_I18070416003414700012, p_core_recharge_order_I18070416010514700016, p_core_recharge_order_I18070415552612300013, p_core_recharge_order_I18070416000614700011, p_core_recharge_order_I18070416005214700014]
+2018-07-04 18:59:03,945 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415595614700010
+2018-07-04 18:59:03,945 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415595614700010】再次入延时消费队列：
+2018-07-04 18:59:03,951 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070416004014700013
+2018-07-04 18:59:03,951 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070416004014700013】再次入延时消费队列：
+2018-07-04 18:59:03,954 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070416012814700019
+2018-07-04 18:59:03,954 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070416012814700019】再次入延时消费队列：
+2018-07-04 18:59:03,957 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070416005414700015
+2018-07-04 18:59:03,957 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070416005414700015】再次入延时消费队列：
+2018-07-04 18:59:03,961 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415592714700008
+2018-07-04 18:59:03,961 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415592714700008】再次入延时消费队列：
+2018-07-04 18:59:03,964 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415554212300014
+2018-07-04 18:59:03,964 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415554212300014】再次入延时消费队列：
+2018-07-04 18:59:03,968 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415592714700009
+2018-07-04 18:59:03,968 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415592714700009】再次入延时消费队列：
+2018-07-04 18:59:03,984 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415254912300001
+2018-07-04 18:59:03,984 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415254912300001】再次入延时消费队列：
+2018-07-04 18:59:03,988 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415562612300016
+2018-07-04 18:59:03,988 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415562612300016】再次入延时消费队列：
+2018-07-04 18:59:03,994 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415320212300002
+2018-07-04 18:59:03,994 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415320212300002】再次入延时消费队列：
+2018-07-04 18:59:03,998 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415595614700010】进入锁【delay:recharge:process】
+2018-07-04 18:59:04,000 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070416012014700018
+2018-07-04 18:59:04,000 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070416012014700018】再次入延时消费队列：
+2018-07-04 18:59:04,008 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415584314700004
+2018-07-04 18:59:04,008 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415584314700004】再次入延时消费队列：
+2018-07-04 18:59:04,013 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415562512300015
+2018-07-04 18:59:04,013 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415562512300015】再次入延时消费队列：
+2018-07-04 18:59:04,031 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415585214700005
+2018-07-04 18:59:04,031 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415585214700005】再次入延时消费队列：
+2018-07-04 18:59:04,033 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415592114700007
+2018-07-04 18:59:04,033 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415592114700007】再次入延时消费队列：
+2018-07-04 18:59:04,038 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070416003414700012
+2018-07-04 18:59:04,038 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070416003414700012】再次入延时消费队列：
+2018-07-04 18:59:04,041 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070416010514700016
+2018-07-04 18:59:04,041 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070416010514700016】再次入延时消费队列：
+2018-07-04 18:59:04,045 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070415552612300013
+2018-07-04 18:59:04,045 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070415552612300013】再次入延时消费队列：
+2018-07-04 18:59:04,050 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070416000614700011
+2018-07-04 18:59:04,050 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070416000614700011】再次入延时消费队列：
+2018-07-04 18:59:04,055 [INFO ] com.hhly.paycore.jms.StartupListener  - redis中，充值中的key：p_core_recharge_order_I18070416005214700014
+2018-07-04 18:59:04,055 [INFO ] com.hhly.paycore.jms.StartupListener  - 系统启动，未关闭充值流水【I18070416005214700014】再次入延时消费队列：
+2018-07-04 18:59:04,411 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20001} enter cache
+2018-07-04 18:59:04,520 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10002, pstmt-20000} enter cache
+2018-07-04 18:59:04,521 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20002} enter cache
+2018-07-04 18:59:04,549 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10002, pstmt-20003} enter cache
+2018-07-04 18:59:04,734 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20004} enter cache
+2018-07-04 18:59:04,738 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20005} enter cache
+2018-07-04 18:59:04,971 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20006} enter cache
+2018-07-04 18:59:05,029 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20007} enter cache
+2018-07-04 18:59:05,215 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:05,395 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10002, pstmt-20008} enter cache
+2018-07-04 18:59:05,481 [INFO ] com.hhly.paycore.service.impl.CancellationRefundOrderGroupServiceImpl  - 合买订单【D18050817154202400007】撤单开始
+2018-07-04 18:59:05,493 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20009} enter cache
+2018-07-04 18:59:05,521 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20010} enter cache
+2018-07-04 18:59:05,522 [INFO ] com.hhly.paycore.service.impl.CancellationRefundOrderGroupServiceImpl  - 合买订单OG18050916305202700023已完成退款，不能重复退款
+2018-07-04 18:59:05,522 [INFO ] com.hhly.paycore.service.impl.CancellationRefundOrderGroupServiceImpl  - 合买订单OG18050916390302700024已完成退款，不能重复退款
+2018-07-04 18:59:05,522 [INFO ] com.hhly.paycore.service.impl.CancellationRefundOrderGroupServiceImpl  - 合买订单OG18050916390902700025已完成退款，不能重复退款
+2018-07-04 18:59:05,522 [INFO ] com.hhly.paycore.service.impl.CancellationRefundOrderGroupServiceImpl  - 合买订单OG18050916391602700026已完成退款，不能重复退款
+2018-07-04 18:59:05,522 [INFO ] com.hhly.paycore.service.impl.CancellationRefundOrderGroupServiceImpl  - 合买订单OG18050916392802700027已完成退款，不能重复退款
+2018-07-04 18:59:05,522 [INFO ] com.hhly.paycore.service.impl.CancellationRefundOrderGroupServiceImpl  - 合买订单OG18050916393202700028已完成退款，不能重复退款
+2018-07-04 18:59:05,522 [INFO ] com.hhly.paycore.service.impl.CancellationRefundOrderGroupServiceImpl  - 获取合买订单【D18050817154202400007】详情为空，或者不能退款
+2018-07-04 18:59:05,531 [INFO ] com.hhly.paycore.service.impl.CancellationRefundServiceImpl  - ######## 【JZ17120211403016600018】撤单开始 #########
+2018-07-04 18:59:05,602 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20011} enter cache
+2018-07-04 18:59:05,603 [INFO ] com.hhly.paycore.service.impl.CancellationRefundServiceImpl  - 获取订单【JZ17120211403016600018】详情失败
+2018-07-04 18:59:05,603 [INFO ] com.hhly.paycore.service.impl.CancellationRefundServiceImpl  - 根据订单编号【JZ17120211403016600018】和订单类型【2】查询订单或追号信息
+2018-07-04 18:59:05,610 [INFO ] com.hhly.paycore.service.impl.CancellationRefundServiceImpl  - ######## 【JZ17082615262116600023】撤单开始 #########
+2018-07-04 18:59:05,614 [INFO ] com.hhly.paycore.service.impl.CancellationRefundServiceImpl  - 获取订单【JZ17082615262116600023】详情失败
+2018-07-04 18:59:05,614 [INFO ] com.hhly.paycore.service.impl.CancellationRefundServiceImpl  - 根据订单编号【JZ17082615262116600023】和订单类型【2】查询订单或追号信息
+2018-07-04 18:59:05,624 [INFO ] com.hhly.paycore.service.impl.CancellationRefundServiceImpl  - ######## 【D1706141711510100016】撤单开始 #########
+2018-07-04 18:59:05,628 [INFO ] com.hhly.paycore.service.impl.CancellationRefundServiceImpl  - 获取订单【D1706141711510100016】详情失败
+2018-07-04 18:59:05,628 [INFO ] com.hhly.paycore.service.impl.CancellationRefundServiceImpl  - 根据订单编号【D1706141711510100016】和订单类型【1】查询订单或追号信息
+2018-07-04 18:59:05,669 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415595614700010】处理完成
+2018-07-04 18:59:05,669 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:05,673 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415254912300001】进入锁【delay:recharge:process】
+2018-07-04 18:59:05,710 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:06,249 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415254912300001】处理完成
+2018-07-04 18:59:06,250 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:06,255 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415320212300002】进入锁【delay:recharge:process】
+2018-07-04 18:59:06,298 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:06,334 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415320212300002】处理完成
+2018-07-04 18:59:06,334 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:06,338 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415552612300013】进入锁【delay:recharge:process】
+2018-07-04 18:59:06,356 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:06,368 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20012} enter cache
+2018-07-04 18:59:06,380 [INFO ] com.hhly.paycore.service.impl.TransTakenConfirmServiceImpl  - CMS批量操作用户提款开始，操作数量：1，操作类型：银行完成
+2018-07-04 18:59:06,391 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20013} enter cache
+2018-07-04 18:59:06,392 [INFO ] com.hhly.paycore.service.impl.TransTakenConfirmServiceImpl  - CMS批量操作用户提款【银行完成】结束
+2018-07-04 18:59:06,397 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415552612300013】处理完成
+2018-07-04 18:59:06,397 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:06,403 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415554212300014】进入锁【delay:recharge:process】
+2018-07-04 18:59:06,412 [INFO ] com.hhly.paycore.service.impl.SendPrizeServiceImpl  - 订单【D1707011744470100052】重置派奖开始
+2018-07-04 18:59:06,418 [INFO ] com.hhly.paycore.service.impl.SendPrizeServiceImpl  - 重置派奖未获取到订单【D1707011744470100052】详情
+2018-07-04 18:59:06,430 [INFO ] com.hhly.paycore.service.impl.TransTakenConfirmServiceImpl  - CMS批量操作用户提款开始，操作数量：1，操作类型：审核
+2018-07-04 18:59:06,431 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:06,436 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20014} enter cache
+2018-07-04 18:59:06,483 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20015} enter cache
+2018-07-04 18:59:06,527 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20016} enter cache
+2018-07-04 18:59:06,528 [INFO ] com.hhly.paycore.service.impl.TransTakenConfirmServiceImpl  - 批量更新CMS交易记录状态失败
+2018-07-04 18:59:06,540 [INFO ] com.hhly.paycore.service.impl.TransTakenConfirmServiceImpl  - CMS批量操作用户提款开始，操作数量：1，操作类型：cms完成，银行处理成功改成银行处理失败
+2018-07-04 18:59:06,546 [INFO ] com.hhly.paycore.service.impl.TransTakenConfirmServiceImpl  - 提款审核不通过或者银行处理失败，退款至用户钱包开始
+2018-07-04 18:59:06,546 [INFO ] com.hhly.paycore.service.impl.TransTakenConfirmServiceImpl  - 提款编号【O17102715383211900005】审核不通过或者银行处理失败，退款至用户钱包
+2018-07-04 18:59:06,560 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415554212300014】处理完成
+2018-07-04 18:59:06,560 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:06,564 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415562512300015】进入锁【delay:recharge:process】
+2018-07-04 18:59:06,583 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20017} enter cache
+2018-07-04 18:59:06,583 [INFO ] com.hhly.paycore.service.impl.TransTakenConfirmServiceImpl  - 未获取到交易记录，参数：提款编号【O17102715383211900005】，状态【3】
+2018-07-04 18:59:06,585 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:06,632 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415562512300015】处理完成
+2018-07-04 18:59:06,632 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:06,634 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415562612300016】进入锁【delay:recharge:process】
+2018-07-04 18:59:06,638 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20018} enter cache
+2018-07-04 18:59:06,648 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:06,701 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20019} enter cache
+2018-07-04 18:59:06,729 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415562612300016】处理完成
+2018-07-04 18:59:06,729 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:06,731 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415584314700004】进入锁【delay:recharge:process】
+2018-07-04 18:59:06,777 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:06,816 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415584314700004】处理完成
+2018-07-04 18:59:06,816 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:06,820 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415585214700005】进入锁【delay:recharge:process】
+2018-07-04 18:59:06,840 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:06,860 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415585214700005】处理完成
+2018-07-04 18:59:06,860 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:06,862 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415592114700007】进入锁【delay:recharge:process】
+2018-07-04 18:59:06,878 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:06,900 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415592114700007】处理完成
+2018-07-04 18:59:06,900 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:06,902 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415592714700008】进入锁【delay:recharge:process】
+2018-07-04 18:59:06,916 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:06,953 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415592714700008】处理完成
+2018-07-04 18:59:06,953 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:06,958 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070415592714700009】进入锁【delay:recharge:process】
+2018-07-04 18:59:06,979 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:07,012 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070415592714700009】处理完成
+2018-07-04 18:59:07,012 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:07,014 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070416000614700011】进入锁【delay:recharge:process】
+2018-07-04 18:59:07,080 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:07,084 [DEBUG] com.hhly.paycore.service.impl.PayCoreServiceImpl  - 开始添加充值流水
+2018-07-04 18:59:07,096 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10003, pstmt-20020} enter cache
+2018-07-04 18:59:07,096 [DEBUG] com.hhly.paycore.service.impl.PayCoreServiceImpl  - 开始更新用户钱包
+2018-07-04 18:59:07,108 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10003, pstmt-20021} enter cache
+2018-07-04 18:59:07,109 [INFO ] com.hhly.paycore.service.impl.UserWalletServiceImpl  - 更新账户余额前，账户余额资金情况【UserWalletBO [userId=1, totalCashBalance=6.0, winningBalance=4.0, top80Balance=2.0, top20Balance=0.0, effRedBalance=2048.0, readyRedBalance=0.0, createTime=Sat Oct 14 15:13:31 CST 2017, updateTime=Sat Mar 17 11:24:34 CST 2018, totalAmount=null, version=87]】，操作金额【100.0】，操作资金【百分之80】
+2018-07-04 18:59:07,114 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10003, pstmt-20022} enter cache
+2018-07-04 18:59:07,114 [INFO ] com.hhly.paycore.service.impl.UserWalletServiceImpl  - 更新账户余额后，账户余额资金情况【UserWalletPO [userId=1, totalCashBalance=106.0, winningBalance=4.0, top80Balance=102.0, top20Balance=0.0, effRedBalance=2048.0, readyRedBalance=0.0, status=1, totalAmount=6.0, version=87, use80Balance=0.0, use20Balance=0.0, useWinBalance=0.0]】，操作金额【100.0】
+2018-07-04 18:59:07,158 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070416000614700011】处理完成
+2018-07-04 18:59:07,158 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:07,172 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070416003414700012】进入锁【delay:recharge:process】
+2018-07-04 18:59:07,214 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:07,244 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070416003414700012】处理完成
+2018-07-04 18:59:07,244 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:07,246 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070416004014700013】进入锁【delay:recharge:process】
+2018-07-04 18:59:07,262 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:07,296 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070416004014700013】处理完成
+2018-07-04 18:59:07,296 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:07,300 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070416005214700014】进入锁【delay:recharge:process】
+2018-07-04 18:59:07,339 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:07,358 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070416005214700014】处理完成
+2018-07-04 18:59:07,358 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:07,361 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070416005414700015】进入锁【delay:recharge:process】
+2018-07-04 18:59:07,376 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:07,398 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070416005414700015】处理完成
+2018-07-04 18:59:07,398 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:07,406 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070416010514700016】进入锁【delay:recharge:process】
+2018-07-04 18:59:07,426 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:07,450 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070416010514700016】处理完成
+2018-07-04 18:59:07,450 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:07,452 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070416012014700018】进入锁【delay:recharge:process】
+2018-07-04 18:59:07,468 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:07,497 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070416012014700018】处理完成
+2018-07-04 18:59:07,497 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:07,500 [DEBUG] com.hhly.paycore.jms.StartupListener  - 【I18070416012814700019】进入锁【delay:recharge:process】
+2018-07-04 18:59:07,516 [ERROR] com.hhly.paycore.paychannel.huayi.util.HuayiUtil  - 查询华移支付结果异常
+org.apache.http.client.ClientProtocolException
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:186)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:468)
+	at com.hhly.skeleton.base.util.HttpUtil.doPost(HttpUtil.java:405)
+	at com.hhly.paycore.paychannel.huayi.util.HuayiUtil.queryResult(HuayiUtil.java:231)
+	at com.hhly.paycore.paychannel.huayi.web.HuayiWapService.payQuery(HuayiWapService.java:59)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl.payQuery(PayServiceImpl.java:337)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$FastClassBySpringCGLIB$$f8622e95.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.remote.service.impl.PayServiceImpl$$EnhancerBySpringCGLIB$$8e17af19.payQuery(<generated>)
+	at com.hhly.paycore.service.impl.TaskServiceImpl.closeOrder(TaskServiceImpl.java:75)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$FastClassBySpringCGLIB$$fb0edc36.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:281)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.hhly.paycore.service.impl.TaskServiceImpl$$EnhancerBySpringCGLIB$$aaa6319a.closeOrder(<generated>)
+	at com.hhly.paycore.jms.StartupListener.process(StartupListener.java:112)
+	at com.hhly.paycore.jms.StartupListener.access$000(StartupListener.java:28)
+	at com.hhly.paycore.jms.StartupListener$1.onDelayedArrived(StartupListener.java:61)
+	at com.hhly.paycore.jms.DelayService$1.run(DelayService.java:37)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.http.ProtocolException: Target host is not specified
+	at org.apache.http.impl.conn.DefaultRoutePlanner.determineRoute(DefaultRoutePlanner.java:70)
+	at org.apache.http.impl.client.InternalHttpClient.determineRoute(InternalHttpClient.java:124)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:183)
+	... 41 more
+2018-07-04 18:59:07,561 [DEBUG] com.hhly.paycore.service.impl.PayCoreServiceImpl  - 开始添加交易流水
+2018-07-04 18:59:07,568 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10003, pstmt-20023} enter cache
+2018-07-04 18:59:07,572 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10003, pstmt-20024} enter cache
+2018-07-04 18:59:07,578 [DEBUG] com.hhly.paycore.jms.StartupListener  - 充值编号【I18070416012814700019】处理完成
+2018-07-04 18:59:07,578 [DEBUG] com.hhly.paycore.jms.StartupListener  - 释放锁【delay:recharge:process】
+2018-07-04 18:59:07,697 [INFO ] com.hhly.paycore.service.impl.MessageProviderImpl  - 发送消息成功！queueKey：msg_queue，消息内容：{"key":"nodeMsgSend","message":{"nodeData":"1;I18070418590713400002","nodeId":4},"messageSource":"lotto-pay"}
+2018-07-04 18:59:10,078 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10002, pstmt-20000} exit cache
+2018-07-04 18:59:10,078 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10002, pstmt-20003} exit cache
+2018-07-04 18:59:10,078 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10002, pstmt-20008} exit cache
+2018-07-04 18:59:10,080 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10003, pstmt-20020} exit cache
+2018-07-04 18:59:10,080 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10003, pstmt-20021} exit cache
+2018-07-04 18:59:10,080 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10003, pstmt-20022} exit cache
+2018-07-04 18:59:10,080 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10003, pstmt-20023} exit cache
+2018-07-04 18:59:10,080 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10003, pstmt-20024} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20001} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20002} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20004} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20005} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20006} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20007} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20010} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20011} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20009} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20014} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20015} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20016} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20013} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20017} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20018} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20019} exit cache
+2018-07-04 18:59:10,081 [DEBUG] com.alibaba.druid.pool.PreparedStatementPool  - {conn-10001, pstmt-20012} exit cache
+2018-07-04 18:59:10,082 [INFO ] com.alibaba.druid.pool.DruidDataSource  - {dataSource-1} closed

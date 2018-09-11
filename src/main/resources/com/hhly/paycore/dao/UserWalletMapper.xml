@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.UserWalletMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.user.bo.UserWalletBO">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="USER_ID" property="userId" jdbcType="INTEGER" />
+		<result column="TOTAL_CASH_BALANCE" property="totalCashBalance" jdbcType="DECIMAL" />
+		<result column="WINNING_BALANCE" property="winningBalance" jdbcType="DECIMAL" />
+		<result column="TOP_80_BALANCE" property="top80Balance" jdbcType="DECIMAL" />
+		<result column="TOP_20_BALANCE" property="top20Balance" jdbcType="DECIMAL" />
+		<result column="EFF_RED_BALANCE" property="effRedBalance" jdbcType="DECIMAL" />
+		<result column="READY_RED_BALANCE" property="readyRedBalance" jdbcType="DECIMAL" />
+		<result column="STATUS" property="status" jdbcType="SMALLINT" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="VERSION" property="version" jdbcType="INTEGER" />
+	</resultMap>
+
+	<sql id="base_column">
+		ID,
+		<include refid="add_column" />
+	</sql>
+
+	<sql id="add_column">
+		USER_ID,TOTAL_CASH_BALANCE,WINNING_BALANCE,TOP_80_BALANCE,TOP_20_BALANCE,EFF_RED_BALANCE,READY_RED_BALANCE,STATUS,UPDATE_TIME,CREATE_TIME,VERSION
+	</sql>
+
+	<sql id="add_value">
+		#{userId,jdbcType=INTEGER}, #{totalCashBalance,jdbcType=DECIMAL},
+		#{winningBalance,jdbcType=DECIMAL},
+		#{top80Balance,jdbcType=DECIMAL}, #{top20Balance,jdbcType=DECIMAL},
+		#{effRedBalance,jdbcType=DECIMAL},
+		#{readyRedBalance,jdbcType=DECIMAL}, #{status,jdbcType=SMALLINT},
+		NOW(), NOW(),#{version,jdbcType=INTEGER}
+	</sql>
+	<!-- 查找用户钱包记录 -->
+	<select id="getWalletByUserId" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM M_USER_WALLET WHERE USER_ID = #{userId} LIMIT 1
+	</select>
+
+	<!-- 添加用户钱包记录 -->
+	<insert id="addUserWallet" parameterType="com.hhly.paycore.po.UserWalletPO">
+		insert into M_USER_WALLET (
+		<include refid="add_column" />
+		)
+		values (
+		<include refid="add_value" />
+		)
+	</insert>
+
+
+	<!--修改用户钱包记录 -->
+	<update id="updateUserWallet" parameterType="com.hhly.paycore.po.UserWalletPO">
+		update M_USER_WALLET
+		<set>
+			UPDATE_TIME = NOW(),
+			VERSION = VERSION+1,
+			<if test="totalCashBalance != null">
+				TOTAL_CASH_BALANCE = #{totalCashBalance,jdbcType=DECIMAL},
+			</if>
+			<if test="winningBalance != null">
+				WINNING_BALANCE = #{winningBalance,jdbcType=DECIMAL},
+			</if>
+			<if test="top80Balance != null">
+				TOP_80_BALANCE = #{top80Balance,jdbcType=DECIMAL},
+			</if>
+			<if test="top20Balance != null">
+				TOP_20_BALANCE = #{top20Balance,jdbcType=DECIMAL},
+			</if>
+			<if test="effRedBalance != null">
+				EFF_RED_BALANCE = #{effRedBalance,jdbcType=DECIMAL},
+			</if>
+			<if test="readyRedBalance != null">
+				READY_RED_BALANCE = #{readyRedBalance,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER} and VERSION = #{version,jdbcType=INTEGER}
+	</update>
+</mapper>

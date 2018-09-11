@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hhly.paycore.dao.PayBankLimitDaoMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.PayBankLimitBO">
+		<id column="ID" jdbcType="DECIMAL" property="id" />
+		<result column="BANKID" jdbcType="DECIMAL" property="bankId" />
+		<result column="LIMITTIME" jdbcType="VARCHAR" property="limitTime" />
+		<result column="LIMITDAY" jdbcType="VARCHAR" property="limitDay" />
+		<result column="LIMITMONTH" jdbcType="VARCHAR" property="limitMonth" />
+		<result column="CONDITION" jdbcType="VARCHAR" property="condition" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CARD_TYPE" jdbcType="SMALLINT" property="cardType" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		select ID, BANKID, LIMITTIME, LIMITDAY, LIMITMONTH, `CONDITION`,
+		REMARK,CARD_TYPE
+		from PAY_BANK_LIMIT
+	</select>
+
+	<select id="getPayBankLimitByBankId" resultMap="BaseResultMap">
+		select ID, BANKID, LIMITTIME, LIMITDAY, LIMITMONTH, `CONDITION`,
+		REMARK,CARD_TYPE
+		from PAY_BANK_LIMIT WHERE BANKID = #{bankId}
+	</select>
+
+	<select id="getByBankIdAndType" resultMap="BaseResultMap">
+		select ID, BANKID, LIMITTIME, LIMITDAY, LIMITMONTH, `CONDITION`,
+		REMARK,CARD_TYPE
+		from PAY_BANK_LIMIT WHERE BANKID = #{bankId} AND CARD_TYPE=#{bankType}
+	</select>
+
+</mapper>

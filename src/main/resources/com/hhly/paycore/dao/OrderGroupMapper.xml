@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.OrderGroupMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.OrderGroupBO">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="order_code" property="orderCode" jdbcType="VARCHAR" />
+		<result column="grpbuy_status" property="grpbuyStatus" jdbcType="BIT" />
+		<result column="min_buy_ratio" property="minBuyRatio" jdbcType="DECIMAL" />
+		<result column="min_buy_amount" property="minBuyAmount" jdbcType="DECIMAL" />
+		<result column="guarantee_ratio" property="guaranteeRatio" jdbcType="DECIMAL" />
+		<result column="guarantee_amount" property="guaranteeAmount" jdbcType="DECIMAL" />
+		<result column="visible_type" property="visibleType" jdbcType="BIT" />
+		<result column="commission_ratio" property="commissionRatio" jdbcType="DECIMAL" />
+		<result column="commission_amount" property="commissionAmount" jdbcType="DECIMAL" />
+		<result column="apply_way" property="applyWay" jdbcType="BIT" />
+		<result column="apply_code" property="applyCode" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="is_top" property="isTop" jdbcType="BIT" />
+		<result column="is_recommend" property="isRecommend" jdbcType="BIT" />
+		<result column="progress" property="progress" jdbcType="DECIMAL" />
+		<result column="progress_amount" property="progressAmount" jdbcType="DECIMAL" />
+		<result column="buy_count" property="buyCount" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="base_column">
+		ID, USER_ID, ORDER_CODE, GRPBUY_STATUS, MIN_BUY_RATIO, MIN_BUY_AMOUNT, GUARANTEE_RATIO,
+		GUARANTEE_AMOUNT,
+		VISIBLE_TYPE, COMMISSION_RATIO, COMMISSION_AMOUNT, APPLY_WAY, APPLY_CODE,
+		TITLE, DESCRIPTION, IS_TOP, IS_RECOMMEND,
+		PROGRESS, PROGRESS_AMOUNT, BUY_COUNT, CREATE_TIME,
+		UPDATE_TIME, REMARK
+	</sql>
+
+	<!-- 根据订单号获取合买订单信息 -->
+	<select id="getOrderGroupByOrderCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM ORDER_GROUP WHERE ORDER_CODE = #{orderCode} limit 1
+	</select>
+</mapper>

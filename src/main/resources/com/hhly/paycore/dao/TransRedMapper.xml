@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.TransRedMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.TransRedBO">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="RED_CODE" property="redCode" jdbcType="VARCHAR" />
+		<result column="RED_TRANS_CODE" property="redTransCode" jdbcType="VARCHAR" />
+		<result column="USER_ID" property="userId" jdbcType="INTEGER" />
+		<result column="ORDER_CODE" property="orderCode" jdbcType="VARCHAR" />
+		<result column="TRANS_STATUS" property="transStatus" jdbcType="SMALLINT" />
+		<result column="TRANS_AMOUNT" property="transAmount" jdbcType="DECIMAL" />
+		<result column="AFT_TRANS_AMOUNT" property="aftTransAmount" jdbcType="DECIMAL" />
+		<result column="TRANS_TYPE" property="transType" jdbcType="SMALLINT" />
+		<result column="ORDER_INFO" property="orderInfo" jdbcType="VARCHAR" />
+		<result column="TRANS_TIME" property="transTime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="RED_TYPE" property="redType" jdbcType="SMALLINT" />
+	</resultMap>
+	<resultMap id="userTransRedMap" type="com.hhly.skeleton.pay.bo.TransRedBO">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="RED_CODE" property="redCode" jdbcType="VARCHAR" />
+		<result column="RED_TRANS_CODE" property="redTransCode" jdbcType="VARCHAR" />
+		<result column="USER_ID" property="userId" jdbcType="INTEGER" />
+		<result column="ORDER_CODE" property="orderCode" jdbcType="VARCHAR" />
+		<result column="TRANS_STATUS" property="transStatus" jdbcType="SMALLINT" />
+		<result column="TRANS_AMOUNT" property="transAmount" jdbcType="DECIMAL" />
+		<result column="AFT_TRANS_AMOUNT" property="aftTransAmount" jdbcType="DECIMAL" />
+		<result column="ORDER_INFO" property="orderInfo" jdbcType="VARCHAR" />
+		<result column="TRANS_TYPE" property="transType" jdbcType="SMALLINT" />
+		<result column="TRANS_TIME" property="transTime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="RED_TYPE" property="redType" jdbcType="SMALLINT" />
+		<result column="LOTTERY_CODE" property="lotteryCode" jdbcType="VARCHAR" />
+		<result column="LOTTERY_NAME" property="lotteryName" jdbcType="VARCHAR" />
+		<result column="LOTTERY_ISSUE" property="lotteryIssue" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="base_column">
+		ID,
+		<include refid="add_column" />
+	</sql>
+
+	<sql id="add_column">
+		RED_CODE, RED_TRANS_CODE, USER_ID, ORDER_CODE, TRANS_STATUS, TRANS_AMOUNT, AFT_TRANS_AMOUNT,
+		TRANS_TYPE,
+		ORDER_INFO, TRANS_TIME, UPDATE_TIME, CREATE_TIME, RED_TYPE
+	</sql>
+
+	<sql id="add_value">#{redCode,jdbcType=VARCHAR}, #{redTransCode,jdbcType=VARCHAR},
+		#{userId,jdbcType=INTEGER},
+		#{orderCode,jdbcType=VARCHAR}, #{transStatus,jdbcType=SMALLINT},
+		#{transAmount,jdbcType=DECIMAL},
+		#{aftTransAmount,jdbcType=DECIMAL}, #{transType,jdbcType=SMALLINT},
+		#{orderInfo,jdbcType=VARCHAR}, NOW(), NOW(),
+		NOW(), #{redType,jdbcType=SMALLINT}
+	</sql>
+
+	<sql id="common_where">
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="userId > 0">
+				AND USER_ID = #{userId}
+			</if>
+			<if test="redCode != null and redCode != '' ">
+				AND RED_CODE =#{redCode}
+			</if>
+			<if test="transStatus!=null">
+				AND TRANS_STATUS = #{transStatus}
+			</if>
+			<if test="timeType == 1">
+				<if test="startDate!=null and startDate!='' ">
+					AND CREATE_TIME BETWEEN #{startDate} AND #{endDate}
+				</if>
+			</if>
+			<if test="timeType == 2">
+				<if test="startDate!=null and startDate!='' ">
+					AND TRANS_TIME BETWEEN #{startDate} AND #{endDate}
+				</if>
+			</if>
+			<if test="tradeTypes!=null">
+				AND TRANS_TYPE IN
+				<foreach collection="tradeTypes" index="index" item="item" open="(" separator="," close=")">
+					#{item}
+				</foreach>
+			</if>
+			<if test="redType != null and redType != '' ">
+				AND RED_TYPE =#{redType}
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 获取用户的红包交易记录 -->
+	<select id="getUserTransRedByCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="base_column" />
+		FROM TRANS_RED WHERE USER_ID = #{userId} AND RED_CODE = #{redCode}
+	</select>
+
+	<!-- 添加用户的红包交易记录 -->
+	<insert id="addTransRed" parameterType="com.hhly.paycore.po.TransRedPO">
+		insert into TRANS_RED (
+		<include refid="add_column" />
+		)
+		values (
+		<include refid="add_value" />
+		)
+	</insert>
+
+	<!-- 分页获取用户红包交易记录 -->
+	<select id="findUserTransRedListByPage" resultMap="userTransRedMap" parameterType="com.hhly.skeleton.pay.vo.TransRedVO">
+		SELECT TR.ID,
+		TR.RED_CODE,
+		TR.RED_TRANS_CODE,
+		TR.USER_ID,
+		TR.ORDER_CODE,
+		TR.TRANS_AMOUNT,
+		TR.AFT_TRANS_AMOUNT,
+		TR.ORDER_INFO,
+		TR.TRANS_TIME,
+		TR.UPDATE_TIME,
+		TR.CREATE_TIME,
+		TR.TRANS_TYPE,
+		TR.RED_TYPE,
+		TR.TRANS_STATUS,
+		OI.LOTTERY_CODE,
+		OI.LOTTERY_NAME,
+		OI.LOTTERY_ISSUE
+		FROM TRANS_RED TR, ORDER_INFO OI
+		WHERE TR.ORDER_CODE =
+		OI.ORDER_CODE
+		<if test="userId > 0">
+			AND TR.USER_ID = #{userId}
+		</if>
+		<if test="redCode != null and redCode != '' ">
+			AND TR.RED_CODE =#{redCode}
+		</if>
+		<if test="transStatus!=null">
+			AND TR.TRANS_STATUS = #{transStatus}
+		</if>
+		<if test="timeType == 1">
+			<if test="startDate!=null and startDate!='' ">
+				AND TR.CREATE_TIME BETWEEN #{startDate} AND #{endDate}
+			</if>
+		</if>
+		<if test="timeType == 2">
+			<if test="startDate!=null and startDate!='' ">
+				AND TR.TRANS_TIME BETWEEN #{startDate} AND #{endDate}
+			</if>
+		</if>
+		<if test="tradeTypes!=null">
+			AND TR.TRANS_TYPE IN
+			<foreach collection="tradeTypes" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="redType != null and redType != '' ">
+			AND TR.RED_TYPE =#{redType}
+		</if>
+		ORDER BY TR.ID DESC limit #{currentResult},#{showCount}
+	</select>
+
+	<!-- 获取符合条件的记录 -->
+	<select id="findUserTransRedListCount" resultType="int" parameterType="com.hhly.skeleton.pay.vo.TransRedVO">
+		SELECT count(1) FROM  TRANS_RED TR, ORDER_INFO OI
+		WHERE TR.ORDER_CODE =
+		OI.ORDER_CODE
+		<if test="userId > 0">
+			AND TR.USER_ID = #{userId}
+		</if>
+		<if test="redCode != null and redCode != '' ">
+			AND TR.RED_CODE =#{redCode}
+		</if>
+		<if test="transStatus!=null">
+			AND TR.TRANS_STATUS = #{transStatus}
+		</if>
+		<if test="timeType == 1">
+			<if test="startDate!=null and startDate!='' ">
+				AND TR.CREATE_TIME BETWEEN #{startDate} AND #{endDate}
+			</if>
+		</if>
+		<if test="timeType == 2">
+			<if test="startDate!=null and startDate!='' ">
+				AND TR.TRANS_TIME BETWEEN #{startDate} AND #{endDate}
+			</if>
+		</if>
+		<if test="tradeTypes!=null">
+			AND TR.TRANS_TYPE IN
+			<foreach collection="tradeTypes" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="redType != null and redType != '' ">
+			AND TR.RED_TYPE =#{redType}
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hhly.paycore.dao.PayBankMapper">
+	<resultMap id="BaseResultMap" type="com.hhly.skeleton.pay.bo.PayBankBO">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="NAME" jdbcType="VARCHAR" property="name" />
+		<result column="CNAME" jdbcType="VARCHAR" property="cName" />
+		<result column="STATUS" jdbcType="SMALLINT" property="status" />
+		<result column="PAYTYPE" jdbcType="DECIMAL" property="payType" />
+		<result column="BLOGO" jdbcType="VARCHAR" property="bLogo" />
+		<result column="SLOGO" jdbcType="VARCHAR" property="sLogo" />
+		<result column="ORDER_PC" jdbcType="SMALLINT" property="orderPc" />
+		<result column="ORDER_H5" jdbcType="SMALLINT" property="orderH5" />
+		<result column="ORDER_ANDROID" jdbcType="SMALLINT" property="orderAndroid" />
+		<result column="ORDER_IOS" jdbcType="SMALLINT" property="orderIos" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+		<result column="MODIFY_BY" jdbcType="VARCHAR" property="modifyBy" />
+		<result column="MODIFY_TIME" jdbcType="DATE" property="modifyTime" />
+		<result column="UPDATE_TIME" jdbcType="DATE" property="updateTime" />
+		<result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+		<result column="CODE" jdbcType="VARCHAR" property="code" />
+	</resultMap>
+
+	<sql id="base_column">
+		ID, NAME, CNAME, STATUS, PAYTYPE, BLOGO, SLOGO, ORDER_PC, ORDER_H5, ORDER_ANDROID, ORDER_IOS,CODE
+	</sql>
+	
+	<select id="getAll" resultMap="BaseResultMap">
+		select
+		<include refid="base_column" />
+		from PAY_BANK
+	</select>
+
+	<select id="getSortBankByPlatform" resultMap="BaseResultMap">
+		select
+		<include refid="base_column" />
+		from PAY_BANK
+		<if test="payType != null">
+			where PAYTYPE = #{payType}
+		</if>
+		<!-- 根据不同端口的字段进行排序 -->
+		<choose>
+			<when test="orderBy == 'PC'">
+				ORDER BY ORDER_PC ASC
+			</when>
+			<when test="orderBy == 'IOS'">
+				ORDER BY ORDER_IOS ASC
+			</when>
+			<when test="orderBy == 'Android'">
+				ORDER BY ORDER_ANDROID ASC
+			</when>
+			<when test="orderBy == 'H5'">
+				ORDER BY ORDER_H5 ASC
+			</when>
+			<!-- 默认使用PC的 -->
+			<otherwise>
+				ORDER BY ORDER_PC ASC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="getBankById" resultMap="BaseResultMap">
+		select
+		<include refid="base_column" />
+		from PAY_BANK WHERE ID = #{id}
+	</select>
+</mapper>

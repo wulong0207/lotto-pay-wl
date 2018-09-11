@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hhly.paycore.dao.TransRemittingDaoMapper" >
+
+
+	<insert id="insert">
+		insert into trans_remitting (id, user_id, remitting_bank,
+		remitting_amount, commit_time,
+		screenshot,
+		create_time,create_by
+		)
+		values (null, #{userId,jdbcType=INTEGER}, #{remittingBank,jdbcType=SMALLINT},
+		#{remittingAmount,jdbcType=DECIMAL}, #{commitTime,jdbcType=TIMESTAMP},
+		#{screenshot,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP},#{createBy,jdbcType=VARCHAR}
+		)
+	</insert>
+</mapper>

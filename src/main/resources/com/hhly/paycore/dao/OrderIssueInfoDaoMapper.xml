@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hhly.paycore.dao.OrderIssueInfoDaoMapper">
+    <resultMap id="BaseResultMap" type="com.hhly.skeleton.lotto.base.ordercopy.bo.OrderIssueInfoBO">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_issue_id" jdbcType="INTEGER" property="userIssueId"/>
+        <result column="order_code" jdbcType="VARCHAR" property="orderCode"/>
+        <result column="max_roi" jdbcType="DECIMAL" property="maxRoi"/>
+        <result column="recommend_reason" jdbcType="VARCHAR" property="recommendReason"/>
+        <result column="is_show" jdbcType="BIT" property="isShow"/>
+        <result column="order_visible_type" jdbcType="BIT" property="orderVisibleType"/>
+        <result column="commission_rate" jdbcType="DECIMAL" property="commissionRate"/>
+        <result column="follow_num" jdbcType="INTEGER" property="followNum"/>
+        <result column="follow_amount" jdbcType="DECIMAL" property="followAmount"/>
+        <result column="commission_amount" jdbcType="DECIMAL" property="commissionAmount"/>
+        <result column="is_top" jdbcType="BIT" property="isTop"/>
+        <result column="is_recommend" jdbcType="BIT" property="isRecommend"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="modify_by" jdbcType="VARCHAR" property="modifyBy"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, user_issue_id, order_code, max_roi, recommend_reason, is_show, order_visible_type,
+        commission_rate, follow_num, follow_amount, commission_amount, is_top, is_recommend,
+        create_time, modify_time, modify_by, update_time
+    </sql>
+    
+    <select id="getOrderIssueInfo" resultMap="BaseResultMap">
+		/*MASTER*/
+		SELECT
+			i.id, i.user_issue_id, i.order_code, i.max_roi, i.recommend_reason, i.is_show, i.order_visible_type,
+	        i.commission_rate, i.follow_num, i.follow_amount, i.commission_amount, i.is_top, i.is_recommend,
+	        i.create_time, i.modify_time, i.modify_by, i.update_time
+		FROM
+			order_issue_info i
+		WHERE
+			i.order_code = #{issueOrderCode}	
+	</select>
+	
+	<update id="update">
+		UPDATE order_issue_info
+        SET 
+            commission_amount = commission_amount+#{commissionAmount,jdbcType=DECIMAL}
+          
+        WHERE id      = #{id,jdbcType=VARCHAR}
+	</update>
+	
+	<update id="updateToZero">
+		UPDATE order_issue_info
+        SET 
+            commission_amount = 0
+          
+        WHERE id      = #{id,jdbcType=VARCHAR}
+	</update>
+</mapper>
